@@ -13,3 +13,5 @@ qiskit-aer==0.17.2
 huggingface_hub==1.28.0
 # Only needed to run the tests in tests/
 pytest==9.1.1
+# Only needed to draw the circuit diagrams (scripts/make_report_figures.py)
+pylatexenc==2.11

@@ -11,6 +11,7 @@
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{url}
+\graphicspath{{figures/}}   % images are in report/figures/ (scripts/make_report_figures.py)
 
 % Placeholder box for figures (replace with \includegraphics when adding images)
 \newcommand{\figplaceholder}[1]{\fbox{\parbox[c][3.2cm][c]{0.92\columnwidth}{\centering\footnotesize Figure placeholder:\\ \texttt{#1}}}}
@@ -331,15 +332,18 @@ The title describes the system we set out to build. Two of its words are not sup
 \appendices
 %=====================================================================
 \section{Circuit Diagrams}
-% Add your circuit images here (e.g. exported from Qiskit with qc.draw("mpl")).
+% Circuit images: report/figures/circuit_*.pdf (all six circuits are there).
 \begin{figure}[htbp]
 \centering
 \figplaceholder{Circuit diagram: hea\_d4 (4 qubits, 12 CZ)}
+% \includegraphics[width=\columnwidth]{circuit_hea_d4.pdf}
 \caption{Hardware-efficient ansatz, depth 4, after transpilation to \{CZ, sx, rz, x\}.}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 \figplaceholder{Circuit diagram: tfim\_d3 and qaoa\_d2}
+% \includegraphics[width=\columnwidth]{circuit_tfim_d3.pdf}\\[2mm]
+% \includegraphics[width=\columnwidth]{circuit_qaoa_d2.pdf}
 \caption{Trotterised TFIM (3 steps) and QAOA (2 layers) circuits.}
 \end{figure}
 
