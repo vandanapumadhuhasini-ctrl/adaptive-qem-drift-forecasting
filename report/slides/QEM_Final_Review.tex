@@ -137,7 +137,7 @@ R.~Rahman and D.~C.~Nguyen, ``Quantum Noise Mitigation With Adaptive Zero-Noise 
 \vspace{0.25cm}
 \item \textbf{Calibration-informed adaptive controller:} jointly selects ZNE scale factors, extrapolator and twirling. In simulation:
 \begin{itemize}
-\item \good{$-4.2$\% to $-5.6$\%} error vs best fixed configuration
+\item \good{$-5.6$\% (1 day), $-4.2$\% (4 days)} error vs best fixed configuration (n.s.\ at 7 days)
 \item \good{$-15$\% to $-19$\%} error vs our reimplementation of the base paper's bandit, same shot budget
 \end{itemize}
 \vspace{0.25cm}
@@ -455,7 +455,7 @@ Did not meet its pre-registered criterion. Evaluated on \textbf{validation data 
 \begin{frame}{Conclusion}
 \begin{exampleblock}{Three separate findings (simulated execution, real IBM calibration drift)}
 \begin{enumerate}
-\item \textbf{Calibration-informed adaptation improved the tested benchmark} under the evaluated conditions: $-4$ to $-6$\% error vs the best fixed setting and $-15$ to $-19$\% vs our reimplementation of the base paper's bandit, with no extra shots.
+\item \textbf{Calibration-informed adaptation improved the tested benchmark} under the evaluated conditions: $-4$ to $-6$\% error vs the best fixed setting at 1 and 4 days and $-15$ to $-19$\% vs our reimplementation of the base paper's bandit, with no extra shots.
 \item \textbf{Transformer forecasting gave no statistically reliable improvement} over the latest calibration at 1, 4 or 7 days (nor did ridge or window-mean forecasts).
 \item \textbf{The decision-focused Transformer did not pass} its validation criterion (exploratory).
 \end{enumerate}
