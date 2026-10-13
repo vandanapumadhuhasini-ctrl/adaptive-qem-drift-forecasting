@@ -99,7 +99,7 @@ Every number below was recomputed from the cited file during the audit. Items ma
 | Probe Spearman / best-action hit rate | 0.03–0.56 / 6–14 % | `results/stage5/figures/probe_reward_quality.csv` | ✓ |
 | R-A vs persistence / best fixed / bandit | −0.42 % / −5.7 % / −17.8 % | `results/robustness/ra/summary_test.json` | ✓ † |
 | R-B vs persistence / best fixed | −0.35 % / −3.6 % (CI [−8.7, +0.04], includes 0) | `results/robustness/rb/summary_test.json` | ✓ † |
-| Captured share of oracle gain, validation | 61–87 % (adaptive policies) | `results/stage4/figures/val/value_of_information.csv` | ✓ (Stage 4, pre-fix; see finding 5) |
+| Captured share of oracle gain, validation | 61–87 % (adaptive policies; 45–87 % with the current code) | `results/stage4/figures/val/value_of_information.csv` | ✓ (Stage 4, pre-fix; see finding 5) |
 | Stage 5b H6 | +0.28 % [+0.14, +0.44] | `results/stage5b/dft_validation_report.json` | ✓ (validation only) |
 | Mean-error table (6 rows × 8 policies) | — | `hypotheses_test.json` `by_regime` | ✓ † (after fix) |
 
@@ -128,8 +128,8 @@ doi.org itself blocks automated requests (HTTP 403), so open each DOI once in a 
 | Import smoke test of every module | **Passed** |
 | `pytest tests` | **Passed** (15/15) |
 | Stage 6 analysis regenerated | **Passed** (byte-identical) |
-| Stage 4 regenerated with current code | **Differs by design** (finding 5); comparison in `docs/FINAL_TECHNICAL_DOCUMENT.md` Appendix C |
-| Stage 5b regenerated | See `docs/FINAL_TECHNICAL_DOCUMENT.md` Appendix C |
+| Stage 4 regenerated with current code | **Differs by design** (finding 5). Headline comparisons change by ≤ 1.3 percentage points and every conclusion holds; captured-share range 61–87 % → 45–87 % (`docs/FINAL_TECHNICAL_DOCUMENT.md` Appendix C) |
+| Stage 5b regenerated | **Passed** (byte-identical, including network training) |
 | LaTeX compilation of report and slides | **Not done** (no TeX installation available) |
 | Hardware execution | **Not applicable**; the project is simulation-only by design |
 
