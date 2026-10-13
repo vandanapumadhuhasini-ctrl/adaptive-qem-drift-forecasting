@@ -41,6 +41,7 @@ STEPS = {
         "-m experiments.stage5_pair_forecast evaluate --sets test",
         "-m experiments.stage5_policies --split test",
         "-m experiments.stage5_stationary",
+        "-m experiments.stage5_consolidated",
         "-m experiments.plot_stage5",
     ],
     "stage6": [  # exploratory test-period analysis by size of device change (~1 min; needs qem)

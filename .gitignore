@@ -46,3 +46,7 @@ results/robustness/*/policy_*.parquet
 
 # Stage 5b training-target cache (regenerable: experiments/s5b_train_targets.py)
 results/stage5b/train_arrays.npy
+
+# Compiled previews of the report and slides (rebuild from the .tex sources)
+*_preview.pdf
+report/figures.zip

@@ -79,7 +79,7 @@ Costs:
      - the published pair value is a strong predictor: its pair-level error against the execution state is 0.195 (log MAE), against 0.208 for the Transformer-based mapping and 0.246 for the window mean. *Correction (Stage 5 analysis): pair CZ values are genuinely recalibrated about daily (median age at decision 22.5 h; most hourly events are re-timestamps), not hourly. The forecasts did worse mainly because per-qubit CZ averages are a poor proxy for a specific pair, which motivates the pair-level forecaster in Stage 5;*
      - forecasting improves T1/T2 (0.23 vs 0.31) but those barely move the decision;
      - **value-of-information ceiling:** even the oracle state beats persistence by only 0.8–1.6 % of error (0.00019–0.00038).
-3. **The faithful contextual bandit is the weakest adaptive approach: about 10 % worse than never adapting.**
+3. **The faithful contextual bandit is the weakest adaptive approach: about 10 % worse than the best fixed action (never adapting).**
    - Causes, measured:
      - (a) the Clifford-probe reward ranks actions poorly. The median per-decision Spearman correlation with the true error ranking is 0.44–0.45 (about 0 for `qaoa_d2`), and the probe identifies the true best action in only 11–12 % of decisions;
      - (b) the probes cost 12.5 % of the shots (≈ +0.001 error);

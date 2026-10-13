@@ -263,7 +263,43 @@ Generated 2026-10-13 from the release commit `14d1350e` (the state at the start 
 | `docs/README.md` | index of the documentation |
 | `docs/audit/AUDIT_REPORT.md` | repository and IEEE-suitability audit |
 | `docs/audit/FILE_INVENTORY.md` | this file |
+| `experiments/stage5_consolidated.py` | descriptive consolidated table: every policy vs persistence (test, post hoc) |
 | `experiments/stage6_change_quartiles.py` | script form of the inline Stage 6 analysis (byte-identical output) |
+| `report/figures.zip` |  |
+| `report/figures/circuit_hea_d4.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_hea_d4.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_hea_d8.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_hea_d8.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_qaoa_d2.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_qaoa_d2.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_qaoa_d4.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_qaoa_d4.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_tfim_d3.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_tfim_d3.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_tfim_d6.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/circuit_tfim_d6.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/data_coverage.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/data_coverage.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/error_by_horizon_test.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/error_by_horizon_test.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/examples_log_t1_k1_test_primary.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/examples_log_t1_k1_test_primary.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/generalisation_test.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/generalisation_test.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/hypotheses_test.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/hypotheses_test.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/mae_vs_horizon_test_primary.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/mae_vs_horizon_test_primary.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/pair_forecast_skill_test.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/pair_forecast_skill_test.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/probe_reward_quality.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/probe_reward_quality.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/skill_vs_persistence_test_primary.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/skill_vs_persistence_test_primary.png` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/value_of_information.pdf` | figures for the report (PDF + 300-dpi PNG) |
+| `report/figures/value_of_information.png` | figures for the report (PDF + 300-dpi PNG) |
+| `results/stage5/consolidated_test.csv` | output of stage5_consolidated.py |
+| `scripts/make_report_figures.py` | collects report figures and draws the six circuits |
 | `tests/conftest.py` | pytest setup (repository root on the path) |
 | `tests/test_core.py` | unit tests: ZNE fits, Holm/bootstrap, noise-model calibration, n-qubit = 4-qubit code, action space and shot budget, cache digest |
 | `tests/test_integrity.py` | integrity tests: split/leakage rules, held-out qubits, dataset counts, freeze checks, headline numbers and report table traced to result files, Stage 5b used no test data |

@@ -1,6 +1,7 @@
 """Unit tests of the numerical building blocks (fast; no project outputs needed)."""
 
 import numpy as np
+import pytest
 import pandas as pd
 
 from src.evaluation.stats import bootstrap_weights, holm, per_series_mae
@@ -78,3 +79,33 @@ def test_cache_digest_ignores_row_order(tmp_path):
     assert digest(str(tmp_path / "a")) == digest(str(tmp_path / "b"))
     np.save(tmp_path / "b" / "sim_arrays.npy", arr[[2, 0, 3, 1]] + 1e-6)
     assert digest(str(tmp_path / "a")) != digest(str(tmp_path / "b"))
+
+
+def test_folding_and_twirling_preserve_the_ideal_circuit():
+    """Without noise, every folded and twirled circuit gives the ideal expectation values,
+    and the achieved scale factors are the ones used in the extrapolation fits."""
+    from src.qem.benchmarks import benchmark
+    from src.qem.mitigation import N_TWIRL, SCALES, circuit_set, exact_values
+    b = benchmark("hea", 4)
+    circuits, achieved = circuit_set(b["native"], b["observables"])
+    assert len(circuits) == len(SCALES) * (1 + N_TWIRL)
+    v = exact_values(circuits, None, b["observables"])               # (obs, scales, 1 + twirls)
+    assert np.allclose(v, b["ideal"][:, None, None], atol=1e-9)
+    assert np.allclose(achieved, SCALES, atol=0.1)                   # 12 CZ gates: scales are reached closely
+    assert achieved[0] == 1.0
+
+
+def test_every_action_spends_the_same_shots():
+    """Shots per observable are split over scale factors and twirl instances, never added."""
+    from src.qem.mitigation import ACTIONS, N_TWIRL, SHOTS
+    for a in ACTIONS:
+        inst = N_TWIRL if a.twirl else 1
+        per_circuit = (SHOTS // len(a.scales)) // inst
+        assert per_circuit * len(a.scales) * inst <= SHOTS
+        assert per_circuit * len(a.scales) * inst > SHOTS - len(a.scales) * inst
+
+
+def test_depolarising_fill_never_double_counts_relaxation():
+    from src.qem.device import _depol_fill
+    assert _depol_fill(1e-3, 4e-4, 2) == pytest.approx((1e-3 - 4e-4) * 2)   # tops up only the gap
+    assert _depol_fill(1e-4, 4e-4, 2) == 0.0                                 # relaxation alone exceeds the report

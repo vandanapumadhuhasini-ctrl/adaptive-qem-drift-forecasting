@@ -167,7 +167,7 @@ Source files: `data/processed/drift_v3/report.json` and `docs/experiment_reports
 
 **Preprocessing:**
 1. **Unit harmonisation.** T1 and T2 were stored in seconds before a May 2026 schema change and in microseconds after it. All are converted to µs.
-2. **Genuine events.** An event counts only if its value differs from the previous event of the same property and qubit (or pair). For example, 89 % of single-qubit gate-error events are re-timestamps of unchanged values.
+2. **Genuine events.** The dataset has no flag for a new measurement, so we use a heuristic: an event counts only if its value differs from the previous event of the same property and qubit (or pair). For example, 89 % of single-qubit gate-error events are re-timestamps of unchanged values.
 3. **Failure ceilings** (invalid measurements) are excluded as targets and masked in features.
 4. **Clock skew:** 22 events had a calibration time after their publication. They are treated as available at the later time.
 5. **Calibration state (CCE).** One row per qubit per T1 calibration. Other properties are attached by an as-of join on *publication* time, so a state never contains information that was not yet public.
@@ -292,7 +292,7 @@ The policies differ only in the state estimate:
 *Disclosure:* `PROTOCOL.md` §4 says "best fixed chosen on Train". The implementation selects it on validation, which is documented in `PROTOCOL_ADDENDUM.md`.
 
 ### 8.9 Contextual multi-armed bandit baseline
-A faithful LinUCB of the base paper (Eqs. 17–19):
+Our reimplementation of the base paper's LinUCB (Eqs. 17–19). It is not the authors' code, and the deviations are listed below:
 - **Context:** intercept plus mean log T1, T2, sx and CZ of the chain.
 - **Arms:** the same 14 actions.
 - **Reward:** the negative error on a **Clifford probe**, i.e. the same circuit with angles snapped to multiples of π/2, so its ideal value is known. It is computed from 1/8 of the shots (1,024), leaving 7,168 for the main estimate. Variance and cost penalties follow the paper.
@@ -494,6 +494,26 @@ Source: `results/stage5/hypotheses_test.json`.
 - **Stationary control (H3b):** −4.9 % [−7.4, −1.0] % against best fixed (30 chains, 180 units). Non-inferior, and in fact better.
 - **The credit belongs to calibration-informed adaptation.** Persistence-driven adaptation achieves the same, because the Transformer adds nothing (§12.2).
 
+**All policies on one scale** (test, k = 1, development chains, R1 + R2; 8,028 units, 29 chains; `results/stage5/consolidated_test.csv`, `experiments/stage5_consolidated.py`):
+- Percentages are (policy − persistence) / persistence, so positive means a higher error than persistence.
+- p-values are two-sided and Holm-adjusted over the nine comparisons.
+- This is a descriptive summary computed after the pre-registered tests; it selects nothing.
+
+| Policy | Mean error | vs persistence | 95 % CI | Holm p (two-sided) | Shots per observable |
+|---|---:|---:|---|---:|---|
+| Adaptive: latest calibration (persistence) | 0.0238 | — | — | — | 8,192 |
+| No mitigation | 0.0462 | +94.43 % | [+64.14, +132.80] % | < 0.01 | 8,192 |
+| Best fixed (global) | 0.0252 | +5.96 % | [+1.91, +12.61] % | < 0.01 | 8,192 |
+| Best fixed (per circuit) | 0.0248 | +4.29 % | [+0.12, +10.97] % | 0.14 | 8,192 |
+| Contextual bandit, probe reward | 0.0280 | +17.73 % | [+14.87, +21.46] % | < 0.01 | 7,168 + 1,024 probe |
+| Contextual bandit, model warm start | 0.0267 | +12.24 % | [+8.73, +16.68] % | < 0.01 | 7,168 + 1,024 probe |
+| Adaptive: window-mean forecast | 0.0241 | +1.15 % | [-0.51, +4.00] % | 1.00 | 8,192 |
+| Adaptive: ridge forecast | 0.0238 | +0.07 % | [-0.22, +0.53] % | 1.00 | 8,192 |
+| Adaptive: Transformer forecast | 0.0238 | +0.02 % | [-0.29, +0.54] % | 1.00 | 8,192 |
+| Adaptive: true state (oracle, not realisable) | 0.0234 | -1.57 % | [-2.82, -0.70] % | < 0.01 | 8,192 |
+
+The hypothesis table above reports each comparison relative to the *comparator's* error. For example, the Transformer-driven error is 15.0 % below the bandit's. Measured against persistence-driven adaptation, the bandit's error is 17.7 % higher. Both statements describe the same gap. All bandit results concern our reimplementation under our simulated conditions, not the published method in general.
+
 Mean error per observable (test, development chains; source `hypotheses_test.json` → `by_regime`):
 
 | Horizon, regime | None | Best fixed | Bandit | Persistence | Window mean | Ridge | Transformer | Oracle* |
@@ -612,11 +632,11 @@ All figures are Matplotlib output: PNG at 300 dpi plus PDF, with the plotted dat
 - **At k = 4 and 7:** −0.05 % and −0.14 %, not significant.
 
 **Artifact check.**
-- The no-history control was slightly better than persistence (−0.22 % at k = 1). It cannot see drift, so it can only have learned a *static* correction to the simulator-based predictions, such as systematic Monte-Carlo bias. That is not drift information.
+- The no-history control was slightly better than persistence (−0.22 % at k = 1). It cannot see drift, so its gain is consistent with a *static* correction to the simulator-based predictions (for example, systematic Monte-Carlo bias) rather than drift information. The experiment does not identify the mechanism.
 - Adding history made the model worse (+0.51 % at k = 1, Transformer vs no-history), consistent with over-fitting.
 
 **Conclusion.**
-- The result does not support a claim that the Transformer learns decision-relevant drift information.
+- The control results are consistent with the model learning a simulator-specific correction. The experiment does not establish that the Transformer learned decision-relevant drift information.
 - The experiment was stopped as agreed, is reported as exploratory, and was **not** evaluated on test data.
 - A confirmatory evaluation would need calibration data published after 2026-10-12.
 
@@ -696,7 +716,7 @@ python3 scripts/download_ibm_data.py          # pinned revision; fails on checks
 python3 reproduce.py --list                   # show all steps
 python3 reproduce.py all                      # confirmatory pipeline, about 4–5 h with 12 workers
 python3 reproduce.py stage4 s5b               # optional: validation-only development and exploratory stages
-python3 -m pytest -q tests                    # 15 tests, a few seconds
+python3 -m pytest -q tests                    # 18 tests, a few seconds
 python3 scripts/compare_reproduction.py <dir> # compare another reproduction with this one
 ```
 

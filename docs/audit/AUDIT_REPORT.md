@@ -66,12 +66,12 @@ Severity:
 | 12 | Reference Liao et al. 2024 lacked page numbers | Low | Crossref | **Fixed** (pp. 1478–1486) |
 | 13 | `PROTOCOL.md` refers to `configs/frozen.yaml`; the implementation uses per-stage freeze files | Low | — | **Disclosed** in the addendum (`PROTOCOL.md` is frozen and cannot be edited) |
 | 14 | Data report cited the parquet by its Hugging Face path, not its local path | Low | — | **Fixed** |
-| 15 | No automated tests | Medium | — | **Fixed.** `tests/`: 15 tests (unit, leakage, freeze, number traceability), all passing |
+| 15 | No automated tests | Medium | — | **Fixed.** `tests/`: 18 tests (unit, leakage, freeze, number traceability, folding/twirling identity, shot budget), all passing |
 | 16 | Pre-protocol pilot code (T1-only, 1,000-record sample) was still in the repository, unused | Low | import tracing | **Removed** before the release (34 files; see inventory §3). Its results remain described as pre-protocol evidence |
 | 17 | Commit hashes cited in `docs/` (e.g. freeze commits) are from the unpublished development history | Low | — | **Disclosed** in README. The freeze files carry UTC timestamps and SHA-256 hashes |
 | 18 | Title promises "Transformer-based" and "real-time"; neither is supported (§6) | High (claims) | Stage 5, 5b results | **Disclosed** in the report conclusion, README and this audit. The title was kept at the owner's request |
 | 19 | The report's author block contains placeholders ("[Department, Institution]"), and figures are placeholders | — | `report/QEM_Project_Report.tex` | **Owner action required** |
-| 20 | The report and slides could not be compiled here (no LaTeX installation) | — | — | **Not verified** |
+| 20 | The report did not compile: in the author block, a `\\` followed by `[City, Country]` is read as `\\[<length>]` ("Missing number") | High (build) | Tectonic (XeTeX) compile | **Fixed** (placeholders wrapped in braces). Report and slides now compile without errors or overfull boxes |
 
 No undocumented use of the test period was found:
 - Stage 5b used training and validation decisions only. This is checked by a test.
@@ -126,11 +126,11 @@ doi.org itself blocks automated requests (HTTP 403), so open each DOI once in a 
 | Raw data SHA-256 | **Passed** (`6c9feb0f…752f0b`) |
 | Installed package versions = `requirements.txt` | **Passed** (11/11) |
 | Import smoke test of every module | **Passed** |
-| `pytest tests` | **Passed** (15/15) |
+| `pytest tests` | **Passed** (18/18) |
 | Stage 6 analysis regenerated | **Passed** (byte-identical) |
 | Stage 4 regenerated with current code | **Differs by design** (finding 5). Headline comparisons change by ≤ 1.3 percentage points and every conclusion holds; captured-share range 61–87 % → 45–87 % (`docs/FINAL_TECHNICAL_DOCUMENT.md` Appendix C) |
 | Stage 5b regenerated | **Passed** (byte-identical, including network training) |
-| LaTeX compilation of report and slides | **Not done** (no TeX installation available) |
+| LaTeX compilation of report and slides | **Passed** with Tectonic 0.17 (XeTeX engine): no errors, no overfull boxes. Overleaf's default pdfLaTeX was not tested here |
 | Hardware execution | **Not applicable**; the project is simulation-only by design |
 
 ---

@@ -14,7 +14,7 @@
 \graphicspath{{figures/}}   % images are in report/figures/ (scripts/make_report_figures.py)
 
 % Placeholder box for figures (replace with \includegraphics when adding images)
-\newcommand{\figplaceholder}[1]{\fbox{\parbox[c][3.2cm][c]{0.92\columnwidth}{\centering\footnotesize Figure placeholder:\\ \texttt{#1}}}}
+\newcommand{\figplaceholder}[1]{\fbox{\parbox[c][3.2cm][c]{0.9\columnwidth}{\centering\footnotesize Figure placeholder:\\ \texttt{#1}}}}
 
 \lstset{basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, columns=fullflexible,
         keywordstyle=\bfseries, language=Python, showstringspaces=false}
@@ -26,26 +26,26 @@
 \author{\IEEEauthorblockN{Madhu Hasini}
 \IEEEauthorblockA{\textit{CB.AI.U4AID24060} \\
 \textit{[Department, Institution]}\\
-[City, Country] \\
-[email]}
+{[City, Country]} \\
+{[email]}}
 \and
 \IEEEauthorblockN{Saanvika}
 \IEEEauthorblockA{\textit{CB.AI.U4AID24047} \\
 \textit{[Department, Institution]}\\
-[City, Country] \\
-[email]}
+{[City, Country]} \\
+{[email]}}
 \and
 \IEEEauthorblockN{Dharshini}
 \IEEEauthorblockA{\textit{CB.AI.U4AID24013} \\
 \textit{[Department, Institution]}\\
-[City, Country] \\
-[email]}
+{[City, Country]} \\
+{[email]}}
 }
 
 \maketitle
 
 \begin{abstract}
-Quantum error mitigation methods such as zero-noise extrapolation and Pauli twirling are usually run with settings fixed in advance, even though the noise of superconducting processors changes from day to day. This project asks whether forecasting that change with a Transformer leads to better mitigation decisions than three alternatives: a fixed configuration, adapting to the latest published calibration, and a contextual multi-armed bandit, which is the approach of our base paper. We built a leakage-safe dataset of 101,891 real calibration states covering 600 qubits on four IBM Heron processors, trained per-qubit and per-pair forecasters, and used the forecasts to choose among 14 mitigation actions for six benchmark circuits. Circuit execution was simulated with noise models built from the real calibrations, and the test period was evaluated once after all choices were frozen. The Transformer forecast calibrations 10 to 26 percent better than persistence but no better than a window mean, ridge regression or gradient-boosted trees. Choosing the mitigation from these forecasts did not beat choosing it from the latest calibration at horizons of one, four or seven days. Adapting to the calibration itself did help: error fell by 4.2 to 5.6 percent relative to the best fixed configuration and by 15 to 19 percent relative to the bandit at an equal shot budget. The largest possible benefit of a perfect forecast was 1.4 to 7.1 percent and was concentrated in abrupt device changes.
+Quantum error mitigation methods such as zero-noise extrapolation and Pauli twirling are usually run with settings fixed in advance, even though the noise of superconducting processors changes from day to day. This project asks whether forecasting that change with a Transformer leads to better mitigation decisions than three alternatives: a fixed configuration, adapting to the latest published calibration, and a contextual multi-armed bandit, which is the approach of our base paper. We built a leakage-safe dataset of 101,891 real calibration states covering 600 qubits on four IBM Heron processors, trained per-qubit and per-pair forecasters, and used the forecasts to choose among 14 mitigation actions for six benchmark circuits. Circuit execution was simulated with noise models built from the real calibrations, and the test period was evaluated once after all choices were frozen. The Transformer forecast calibrations 10 to 26 percent better than persistence but no better than a window mean, ridge regression or gradient-boosted trees. Choosing the mitigation from these forecasts did not beat choosing it from the latest calibration at horizons of one, four or seven days. In this simulated benchmark, adapting to the calibration itself did help: error fell by 4.2 to 5.6 percent relative to the best fixed configuration and by 15 to 19 percent relative to our reimplementation of the bandit at an equal shot budget. The largest possible benefit of a perfect forecast was 1.4 to 7.1 percent and was concentrated in abrupt device changes. An exploratory decision-focused Transformer did not pass its validation criterion either.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -68,7 +68,7 @@ We set out to test this carefully. We pre-registered our hypotheses and success 
 %=====================================================================
 \textit{Zero-noise extrapolation and twirling.} Temme et al. \cite{temme2017} and Li and Benjamin \cite{li2017} introduced the idea of extrapolating to zero noise. Kandala et al. \cite{kandala2019} demonstrated it on superconducting hardware by stretching pulses, and Giurgica-Tiron et al. \cite{giurgica2020} showed that unitary folding achieves the same effect digitally. Kim et al. \cite{kim2023} combined ZNE with Pauli twirling at a scale of over one hundred qubits. Wallman and Emerson \cite{wallman2016} showed that twirling tailors arbitrary noise into a Pauli channel. Cai et al. \cite{cai2023} give a broad review of these and other mitigation techniques.
 
-\textit{Adaptive and learning-based mitigation.} Rahman and Nguyen \cite{rahman2026} select the ZNE folding set with a cost-aware LinUCB contextual bandit \cite{li2010} under time-varying noise and report up to 40 percent fewer circuit executions than fixed folding. Hour et al. \cite{hour2026} adjust the folding to the device noise. Learning-based estimators such as Clifford data regression \cite{czarnik2021,perezguijarro2026} learn a correction from near-Clifford training circuits, and Liao et al. \cite{liao2024} apply machine learning directly to mitigation. Placidi et al. \cite{placidi2026} train attention-based sequence models that map noisy output distributions to ideal ones. Prodius et al. \cite{prodius2026} study how finite-shot uncertainty propagates through mitigation estimates, which is relevant to choosing between low-variance and low-bias settings.
+\textit{Adaptive and learning-based mitigation.} Rahman and Nguyen \cite{rahman2026} select the ZNE folding set with a cost-aware LinUCB contextual bandit \cite{li2010} under time-varying noise. In simulated experiments with variational classifiers and a prescribed drift profile, they report about 39 to 41 percent fewer circuit round trips than fixed \{1,3,5\} folding, with accuracy close to the best of eleven baselines. Hour et al. \cite{hour2026} adjust the folding to the device noise. Learning-based estimators such as Clifford data regression \cite{czarnik2021,perezguijarro2026} learn a correction from near-Clifford training circuits, and Liao et al. \cite{liao2024} apply machine learning directly to mitigation. Placidi et al. \cite{placidi2026} train attention-based sequence models that map noisy output distributions to ideal ones. Prodius et al. \cite{prodius2026} study how finite-shot uncertainty propagates through mitigation estimates, which is relevant to choosing between low-variance and low-bias settings.
 
 \textit{Drift in quantum hardware.} Proctor et al. \cite{proctor2020} developed methods to detect and track drift in quantum processors, and Klimov et al. \cite{klimov2018} documented large fluctuations of energy-relaxation times caused by two-level-system defects. Neither line of work uses forecasts of drift to configure mitigation.
 
@@ -95,7 +95,7 @@ The problem only exists because of quantum hardware. Mitigation settings matter 
 %=====================================================================
 \begin{itemize}
 \item A leakage-safe benchmark that links real IBM Heron calibration drift (101,891 calibration states, 600 qubits, four processors) to adaptive ZNE and Pauli-twirling decisions, with chronological, unseen-qubit and unseen-device evaluation.
-\item A calibration-informed, model-based controller that jointly selects ZNE scale factors, extrapolator and twirling, and that reduces error by 4.2 to 5.6 percent against the best fixed configuration and by 15 to 19 percent against a faithful contextual-bandit baseline at an equal shot budget.
+\item A calibration-informed, model-based controller that jointly selects ZNE scale factors, extrapolator and twirling, and that, in simulation, reduces error by 4.2 to 5.6 percent against the best fixed configuration and by 15 to 19 percent against our reimplementation of the base paper's contextual bandit at an equal shot budget.
 \item A pre-registered test of Transformer-based forecasting showing that better calibration forecasts did not produce better mitigation decisions, together with a value-of-information analysis that bounds the possible benefit at 1.4 to 7.1 percent and locates it in abrupt device changes.
 \end{itemize}
 
@@ -108,6 +108,7 @@ We used the public \textit{qiskit-calibration-drift} dataset \cite{driftdata}, w
 \begin{table}[htbp]
 \caption{Calibration data used in this study (real IBM records)}
 \begin{center}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lr}
 \toprule
 \textbf{Item} & \textbf{Value} \\
@@ -115,34 +116,34 @@ We used the public \textit{qiskit-calibration-drift} dataset \cite{driftdata}, w
 Rows in the dataset file & 16,140,252 \\
 Genuine measurements (value changed) & 2,024,027 \\
 Calibration states used for modelling & 101,891 \\
-Backends & fez, kingston, marrakesh, torino \\
+Backends (IBM Heron) & 4 \\
 Qubits & 600 \\
 Period & Jan. to Oct. 2026 \\
 Median spacing between calibrations & 24.8 h \\
-Properties & $T_1$, $T_2$, sx error, readout, CZ error \\
+Properties & $T_1$, $T_2$, sx, readout, CZ \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \label{tab:data}
 \end{center}
 \end{table}
 
-\textit{Cleaning.} $T_1$ and $T_2$ were stored in seconds before a schema change in May 2026 and in microseconds after it; we converted everything to microseconds. This mix of units had also affected the first version of our pipeline. An event counts as a genuine measurement only if its value differs from the previous event of the same property and qubit; about 89 percent of the single-qubit gate-error events were re-timestamps of unchanged values. Failure ceilings (values at or above 0.999) were removed. Every other property is attached to a calibration state by an as-of join on its publication time, so a state never contains information that was not public at the decision time. A gap of more than seven days starts a new segment, and windows never cross a segment.
+\textit{Cleaning.} $T_1$ and $T_2$ were stored in seconds before a schema change in May 2026 and in microseconds after it; we converted everything to microseconds. This mix of units had also affected the first version of our pipeline. The dataset has no flag that marks a new measurement, so we use a heuristic: an event counts as a genuine measurement only if its value differs from the previous event of the same property and qubit. About 89 percent of the single-qubit gate-error events were re-timestamps of unchanged values. A \textit{calibration state} is one assembled record per qubit and $T_1$ calibration: the new $T_1$ value together with the qubit's other properties as published at that moment. Failure ceilings (values at or above 0.999) were removed. Every other property is attached to a calibration state by an as-of join on its publication time, so a state never contains information that was not public at the decision time; this is checked by assertions in the pipeline. A gap of more than seven days starts a new segment, and windows never cross a segment.
 
-\textit{Splits.} The split is chronological: training before 1 August 2026, validation in August, and test from 1 September to 12 October 2026. ibm\_fez and ibm\_kingston are the development backends. Twenty percent of their qubits are held out entirely, ibm\_marrakesh is held out as an unseen device, and the retired ibm\_torino is used only descriptively. Scalers and hyperparameters were fitted on training and validation data only.
+\textit{Splits.} The split is chronological: training before 1 August 2026, validation in August, and test from 1 September to 12 October 2026. ibm\_fez and ibm\_kingston are the development backends. Twenty percent of their qubits are held out entirely, ibm\_marrakesh is held out as an unseen device, and the retired ibm\_torino is used only descriptively. The unseen qubits and the unseen device are scored only on the test period, so they are new in both qubit and time. Scalers and hyperparameters were fitted on training and validation data only.
 
 \subsection{Forecasting models}
-Each sample is a window of the last 20 calibration states of a qubit (19 features) and the targets are the changes in log $T_1$, log $T_2$, log single-qubit error, log readout error and log mean CZ error at 1, 2, 4 and 7 calibrations ahead. We compared persistence (the latest value), the mean of the last 5 and the last 20 values, ridge regression and histogram gradient-boosted trees on lag features, an LSTM, and a Transformer encoder with learned positional embeddings and a multi-horizon output head. Hyperparameters were chosen on validation. The selected Transformer has one encoder layer, model width 32, four heads and a feed-forward width of 64, and we report a five-seed ensemble. Because the mitigation decision depends mostly on two-qubit gate error, we also trained the same model families on pair-level CZ error, at horizons of 1, 4 and 7 days.
+Each sample is a window of the last 20 calibration states of a qubit (19 features) and the targets are the changes in log $T_1$, log $T_2$, log single-qubit error, log readout error and log mean CZ error at 1, 2, 4 and 7 calibrations ahead. These per-qubit horizons count calibration cycles, whose spacing has a median of 24.8 hours but varies (90th percentile 40 hours). We compared persistence (the latest value), the mean of the last 5 and the last 20 values, ridge regression and histogram gradient-boosted trees on lag features, an LSTM, and a Transformer encoder with learned positional embeddings and a multi-horizon output head. Hyperparameters were chosen on validation. The selected Transformer has one encoder layer, model width 32, four heads and a feed-forward width of 64, and we report a five-seed ensemble. Because the mitigation decision depends mostly on two-qubit gate error, we also trained the same model families on pair-level CZ error at horizons of 1, 4 and 7 days. Pair-level forecasts and all mitigation decisions use daily, chip-wide calibration epochs, so their horizons are measured in days.
 
 \subsection{Backend model and circuits}
-IBM recalibrates $T_1$ on a whole chip within seconds once per day, so one decision is made per backend-day. Decisions are made for chains of four physically coupled qubits taken from the real coupling map (30 development chains, 12 on ibm\_fez and 18 on ibm\_kingston, and 15 on the unseen device; the selector asked for more disjoint chains than the coupling graph of eligible qubits allowed). For each chain and day we build a Qiskit Aer \cite{qiskit2024} noise model from the published calibration. Single-qubit gates carry thermal relaxation over the real gate duration (24, 32 or 36 ns), and CZ gates carry relaxation over 68 ns. A depolarizing channel is added so that the average gate infidelity matches the reported error (within 0.07 percent in our checks). In a coherent regime we add a fixed controlled-phase error of 0.03 rad to every CZ. We used six circuits on the native gate set \{CZ, sx, rz, x\}: a hardware-efficient ansatz, a Trotterised transverse-field Ising model and a QAOA circuit, each at two depths (12 to 36 CZ gates). The observables are single-qubit and nearest-neighbour Z and X Pauli strings whose noiseless value exceeds 0.2 in magnitude.
+IBM recalibrates $T_1$ on a whole chip within seconds once per day, so one decision is made per backend-day. Decisions are made for chains of four physically coupled qubits taken from the real coupling map (30 development chains, 12 on ibm\_fez and 18 on ibm\_kingston, and 15 on the unseen device; the selector asked for more disjoint chains than the coupling graph of eligible qubits allowed). For each chain and day we build a Qiskit Aer \cite{qiskit2024} noise model from the published calibration. Single-qubit gates carry thermal relaxation over the real gate duration (24, 32 or 36 ns), and CZ gates carry relaxation over 68 ns. A depolarizing channel then fills only the gap between the reported error and the infidelity already caused by relaxation, so relaxation is not counted twice, and the modelled average gate infidelity matches the reported error (within 0.07 percent in our checks). Readout and idle errors are not simulated, so the readout calibrations that the forecasters predict do not enter the decisions. In a coherent regime we add a fixed controlled-phase error of 0.03 rad to every CZ. We used six circuits on the native gate set \{CZ, sx, rz, x\}: a hardware-efficient ansatz, a Trotterised transverse-field Ising model and a QAOA circuit, each at two depths (12 to 36 CZ gates). The observables are single-qubit and nearest-neighbour Z and X Pauli strings whose noiseless value exceeds 0.2 in magnitude.
 
 \subsection{Mitigation actions and policies}
-All policies choose from the same 14 actions: no mitigation, twirling only, and six ZNE settings with and without twirling (scale sets \{1,3\}, \{1,2,3\}, \{1,3,5\} and \{1,3,5,7\}; linear, Richardson, exponential and quadratic fits). Noise is scaled by local CZ folding, and twirling uses eight random Pauli frames. Every policy spends the same budget of 8,192 shots per observable.
+All policies choose from the same 14 actions: no mitigation, twirling only, and six ZNE settings with and without twirling (scale sets \{1,3\}, \{1,2,3\}, \{1,3,5\} and \{1,3,5,7\}; linear, Richardson, exponential and quadratic fits). Noise is scaled by local CZ folding (CZ $\rightarrow$ CZ(CZ CZ)$^n$); for scale factors that do not divide evenly, only some CZ gates are folded, and the fits use the scale actually achieved. Twirling draws eight Pauli frames per circuit, uniformly from the sixteen frames that leave each CZ unchanged, with a fixed seed. We verified that every folded and twirled circuit reproduces the ideal values exactly without noise. Exponential fits fall back to linear fits when the values change sign or approach zero, and all estimates are clipped to $[-1,1]$. Every policy spends the same budget of 8,192 shots per observable, split evenly over scale factors and twirl frames, so twirling adds circuits but not shots.
 
-The \textit{model-based controller} builds a noise model from a state estimate, simulates every action, and picks the one with the lowest expected error including shot noise. The state estimate is what distinguishes the policies: the latest published calibration (persistence), the window-mean, ridge or Transformer forecast, or the true execution state (an unrealisable oracle). The \textit{best fixed} policy uses the single action with the lowest validation error. The \textit{contextual bandit} follows the LinUCB formulation of the base paper \cite{rahman2026}: the reward is the error on a Clifford version of the circuit, whose ideal value is known, run with one eighth of the shot budget, and feedback arrives only after execution. Its hyperparameters were tuned on validation, and we added reward centering and a play-each-arm-once start, without which even a bandit rewarded with the true error performed worse than a fixed action.
+The \textit{model-based controller} builds a noise model from a state estimate, simulates every action, and picks the one with the lowest expected error including shot noise. The state estimate is what distinguishes the policies: the latest published calibration (persistence), the window-mean, ridge or Transformer forecast, or the true execution state (an unrealisable oracle). The \textit{best fixed} policy uses the single action with the lowest error on the validation period (our protocol text said the training period; we used validation, which gives the baseline more recent data, and we report this deviation). The \textit{contextual bandit} is our reimplementation of the LinUCB formulation of the base paper \cite{rahman2026}, not the authors' code: the reward is the error on a Clifford version of the circuit, whose ideal value is known, measured with one eighth of the shot budget (1,024 shots) while the main estimate uses the remaining 7,168, and feedback arrives only after execution. Its hyperparameters were tuned on validation, and we added reward centering and a play-each-arm-once start, without which even a bandit rewarded with the true error performed worse than a fixed action.
 
 \subsection{Metrics and evaluation protocol}
-Forecasts are scored by the mean absolute error of the log value, averaged per qubit so that each qubit counts once. A mitigation decision is scored by the mean over observables of the expected absolute error $\mathbb{E}\,|\hat{E}-E_{\mathrm{ideal}}|$, with shot noise averaged over 200 Monte Carlo trials using common random numbers for all policies. Comparisons are paired differences with 95 percent confidence intervals from a cluster bootstrap (10,000 resamples of qubits or chains within each backend), and Holm correction is applied within each family of tests. Our hypotheses were fixed before the expanded experiments: H1, the Transformer forecasts better than every baseline; H2 (primary), Transformer-driven adaptation beats persistence-driven adaptation one day ahead; H3, it beats the best fixed action and is not worse under stationary noise; H4, it beats the bandit. The test period was evaluated once, after the hashes of all inputs were frozen.
+Forecasts are scored by the mean absolute error of the log value, averaged per qubit so that each qubit counts once. A mitigation decision is scored by the mean over observables of the expected absolute error $\mathbb{E}\,|\hat{E}-E_{\mathrm{ideal}}|$, with shot noise averaged over 200 Monte Carlo trials using common random numbers for all policies. Every percentage is a difference in mean error divided by the error of the policy it is compared with. Comparisons are paired differences with 95 percent confidence intervals from a cluster bootstrap (10,000 resamples of qubits or chains within each backend), and Holm correction is applied within each family of tests. Our hypotheses were fixed before the expanded experiments: H1, the Transformer forecasts better than every baseline; H2 (primary), Transformer-driven adaptation beats persistence-driven adaptation one day ahead; H3, it beats the best fixed action and is not worse under stationary noise; H4, it beats the bandit. The test period was evaluated once, after the hashes of all inputs were frozen.
 
 %=====================================================================
 \section{Results}
@@ -154,6 +155,7 @@ Table~\ref{tab:fc} shows the test error of the per-qubit forecasters. Every lear
 \caption{Per-qubit forecast error on the test set (MAE of log value; 1 / 7 calibrations ahead)}
 \begin{center}
 \setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Property} & \textbf{Persist.} & \textbf{Win. mean} & \textbf{Ridge} & \textbf{Transformer} \\
@@ -164,7 +166,7 @@ sx error & 0.241 / 0.326 & 0.242 / 0.251 & 0.222 / 0.245 & 0.216 / 0.242 \\
 Readout & 0.371 / 0.389 & 0.292 / 0.309 & 0.287 / 0.303 & 0.294 / 0.314 \\
 CZ (mean) & 0.191 / 0.246 & 0.191 / 0.207 & 0.183 / 0.201 & 0.173 / 0.200 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \label{tab:fc}
 \end{center}
 \end{table}
@@ -172,7 +174,7 @@ CZ (mean) & 0.191 / 0.246 & 0.191 / 0.207 & 0.183 / 0.201 & 0.173 / 0.200 \\
 % ---- Figure: forecast error vs horizon (add your image) ----
 \begin{figure}[htbp]
 \centering
-\figplaceholder{results/stage3/figures/test/mae\_vs\_horizon\_test\_primary.pdf}
+\figplaceholder{figures/mae\_vs\_horizon\_test\_primary.pdf}
 % \includegraphics[width=\columnwidth]{mae_vs_horizon_test_primary.pdf}
 \caption{Forecast error versus horizon for each calibration property (test, development qubits, 95\% confidence intervals).}
 \label{fig:fc}
@@ -198,7 +200,7 @@ Transformer & 11.5\% & 18.7\% & 18.1\% \\
 \end{table}
 
 \subsection{Adaptive mitigation}
-Table~\ref{tab:hyp} summarises the pre-registered tests on the test period, and Table~\ref{tab:err} gives the mean errors. The primary hypothesis H2 failed. Choosing the mitigation from the Transformer forecast changed the error by +0.02 percent relative to choosing it from the latest calibration, with a confidence interval that includes zero. The same holds four and seven days ahead and on the unseen device, and the window-mean and ridge forecasts made no difference either. Adapting to the calibration, on the other hand, clearly helped. It reduced the error by 5.6 percent one day ahead and 4.2 percent four days ahead relative to the best fixed action (H3), and it was not worse under stationary noise. Against the contextual bandit, the reduction was 15 to 19 percent at every horizon (H4).
+Table~\ref{tab:hyp} summarises the pre-registered tests on the test period, and Table~\ref{tab:err} gives the mean errors. The primary hypothesis H2 failed. Choosing the mitigation from the Transformer forecast changed the error by +0.02 percent relative to choosing it from the latest calibration, with a confidence interval that includes zero. The same holds four and seven days ahead and on the unseen device, and the window-mean and ridge forecasts made no difference either. Adapting to the calibration, on the other hand, helped in this simulated benchmark. It reduced the error by 5.6 percent one day ahead and 4.2 percent four days ahead relative to the best fixed action (H3), and it was not worse under stationary noise. Against the contextual bandit, the reduction was 15 to 19 percent at every horizon (H4). Table~\ref{tab:all} puts every policy on one scale, relative to persistence. The percentages in Table~\ref{tab:hyp} are relative to the comparator's error: the Transformer-driven controller's error is 15.0 percent below the bandit's. Measured the other way round, against persistence-driven adaptation (whose error is almost identical to the Transformer-driven one), the bandit's error is 17.7 percent higher. These results concern our reimplementation of the bandit under our simulated conditions, not the published method in general.
 
 \begin{table}[htbp]
 \caption{Pre-registered hypothesis tests (test set, development chains, real drift)}
@@ -239,34 +241,58 @@ H4 vs bandit & $-15.0\%$ / $-18.7\%$ / $-14.5\%$ & Supported \\
 \end{center}
 \end{table*}
 
+\begin{table*}[htbp]
+\caption{All policies compared with adaptation to the latest calibration (test set, 1 day ahead, development chains, R1 and R2 pooled; 8,028 decision units from 29 chains). Percentages are (policy $-$ persistence) / persistence; a positive value means a higher error than persistence. Confidence intervals come from the paired cluster bootstrap; $p$-values are two-sided and Holm-adjusted across the nine comparisons. This summary was computed after the pre-registered tests and selects nothing.}
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Policy} & \textbf{Mean error} & \textbf{vs persistence (\%)} & \textbf{95\% CI (\%)} & \textbf{Holm $p$} & \textbf{Shots per observable} \\
+\midrule
+Adaptive: latest calibration & 0.0238 & -- & -- & -- & 8,192 \\
+No mitigation & 0.0462 & $+94.43$ & [$+64.14$, $+132.80$] & $<$0.01 & 8,192 \\
+Best fixed (global) & 0.0252 & $+5.96$ & [$+1.91$, $+12.61$] & $<$0.01 & 8,192 \\
+Best fixed (per circuit) & 0.0248 & $+4.29$ & [$+0.12$, $+10.97$] & 0.14 & 8,192 \\
+Bandit, probe reward & 0.0280 & $+17.73$ & [$+14.87$, $+21.46$] & $<$0.01 & 7,168 + 1,024 \\
+Bandit, warm start & 0.0267 & $+12.24$ & [$+8.73$, $+16.68$] & $<$0.01 & 7,168 + 1,024 \\
+Adaptive: window mean & 0.0241 & $+1.15$ & [$-0.51$, $+4.00$] & 1.00 & 8,192 \\
+Adaptive: ridge & 0.0238 & $+0.07$ & [$-0.22$, $+0.53$] & 1.00 & 8,192 \\
+Adaptive: Transformer & 0.0238 & $+0.02$ & [$-0.29$, $+0.54$] & 1.00 & 8,192 \\
+Adaptive: oracle$^{\dagger}$ & 0.0234 & $-1.57$ & [$-2.82$, $-0.70$] & $<$0.01 & 8,192 \\
+\bottomrule
+\multicolumn{6}{l}{$^{\dagger}$ Uses the true execution state; not realisable. The adaptive controllers also need a classical simulation of every action per decision.}
+\end{tabular}
+\label{tab:all}
+\end{center}
+\end{table*}
+
 % ---- Figure: hypothesis forest plot (add your image) ----
 \begin{figure}[htbp]
 \centering
-\figplaceholder{results/stage5/figures/hypotheses\_test.pdf}
+\figplaceholder{figures/hypotheses\_test.pdf}
 % \includegraphics[width=\columnwidth]{hypotheses_test.pdf}
 \caption{Paired error differences of Transformer-driven adaptation against each alternative (test set, 95\% cluster-bootstrap confidence intervals).}
 \label{fig:hyp}
 \end{figure}
 
 \subsection{Why forecasting did not help}
-The oracle row in Table~\ref{tab:err} shows how much a perfect forecast could add over the latest calibration: 1.4 to 1.7 percent one day ahead, 3.0 to 3.7 percent four days ahead and 5.2 to 7.1 percent seven days ahead. When we sorted the test decisions by how much the chain's CZ error actually changed, almost all of this benefit came from the quarter with the largest changes (a median change of about 2.3 times). There the oracle beat persistence by 6.4, 9.3 and 14.1 percent at the three horizons, and adapting to the stale calibration was worse than not adapting at all. The Transformer forecasts were closer to the truth than persistence in 90 to 97 percent of these cases, but they recovered only about 1.2 to 1.4 percent at one and four days and nothing at seven days. Elsewhere they were slightly worse. The forecasts improve accuracy mostly by pulling values toward a recent average, and that does not change which mitigation action looks best. Forecast accuracy and decision value are therefore not the same thing.
+The oracle row in Table~\ref{tab:err} shows how much a perfect forecast could add over the latest calibration: 1.4 to 1.7 percent one day ahead, 3.0 to 3.7 percent four days ahead and 5.2 to 7.1 percent seven days ahead. When we sorted the test decisions by how much the chain's CZ error actually changed, almost all of this benefit came from the quarter with the largest changes (a median change of about 2.3 times). There the oracle beat persistence by 6.4, 9.3 and 14.1 percent at the three horizons, and adapting to the stale calibration was worse than using the best fixed action. The Transformer forecasts were closer to the truth than persistence in 90 to 97 percent of these cases, but they recovered only about 1.2 to 1.4 percent at one and four days and nothing at seven days. Elsewhere they were slightly worse. The forecasts improve accuracy mostly by pulling values toward a recent average, and that does not change which mitigation action looks best. Forecast accuracy and decision value are therefore not the same thing.
 
 % ---- Figure: error by horizon (add your image) ----
 \begin{figure}[htbp]
 \centering
-\figplaceholder{results/stage5/figures/error\_by\_horizon\_test.pdf}
+\figplaceholder{figures/error\_by\_horizon\_test.pdf}
 % \includegraphics[width=\columnwidth]{error_by_horizon_test.pdf}
 \caption{Mean mitigated error by decision horizon for each policy (test set).}
 \label{fig:hor}
 \end{figure}
 
 \subsection{Why the bandit underperformed}
-The bandit was worse than the best fixed action, even after tuning. The reason is its feedback. On the test period the ranking of actions by the Clifford-probe reward agreed only weakly with the ranking by true error (median Spearman correlation between 0.03 and 0.56 depending on the circuit), and the probe picked the truly best action in only 6 to 14 percent of states. The probes also used 12.5 percent of the shots, and with feedback delayed by several days the bandit degraded further. Even with an unrealisable reward equal to the true error, it only matched a well-chosen fixed action per circuit. The base paper's classification task provides a reward through labels; estimating an expectation value of an arbitrary circuit does not.
+Our reimplementation of the bandit was worse than the best fixed action, even after tuning. The reason is its feedback. On the test period the ranking of actions by the Clifford-probe reward agreed only weakly with the ranking by true error (median Spearman correlation between 0.03 and 0.56 depending on the circuit), and the probe picked the truly best action in only 6 to 14 percent of states. The probes also used 12.5 percent of the shots, and with feedback delayed by several days the bandit degraded further. Even with an unrealisable reward equal to the true error, it only matched a well-chosen fixed action per circuit. The base paper's classification task provides a reward through labels; estimating an expectation value of an arbitrary circuit does not.
 
 % ---- Figure: probe reward quality (add your image) ----
 \begin{figure}[htbp]
 \centering
-\figplaceholder{results/stage5/figures/probe\_reward\_quality.pdf}
+\figplaceholder{figures/probe\_reward\_quality.pdf}
 % \includegraphics[width=\columnwidth]{probe_reward_quality.pdf}
 \caption{Agreement between the bandit's Clifford-probe reward and the true error ranking of the 14 actions, per circuit.}
 \label{fig:probe}
@@ -294,12 +320,12 @@ Oracle gap & 1.4--1.7\% & 2.5\% & 2.6\% \\
 \end{center}
 \end{table}
 
-Finally, we tried a decision-focused Transformer that reads the chain's calibration history and directly corrects the predicted error of each action. On validation it was 0.28 percent worse than persistence one day ahead, and a control model without any history did slightly better than both, which points to a fixed correction of the simulator rather than learned drift. We stopped this experiment before the test stage and report it only as exploratory work.
+Finally, we tried a decision-focused Transformer that reads the chain's calibration history and directly corrects the predicted error of each action. On validation it was 0.28 percent worse than persistence one day ahead, so it did not meet its pre-registered success criterion. A control model without any history did slightly better than both. This is consistent with the model learning a simulator-specific correction; the experiment does not establish that it learned decision-relevant drift. It was evaluated on validation data only, never on an independent test period, and we report it only as exploratory work.
 
 %=====================================================================
 \section{Conclusion and Outlook}
 %=====================================================================
-We tested whether Transformer forecasts of real calibration drift can improve adaptive zero-noise extrapolation and Pauli twirling. On real IBM Heron calibration histories and a strict, pre-registered protocol, they did not: neither as forecasts handed to a controller nor as a decision-focused controller did the Transformer beat simply adapting to the latest calibration. What did help was adapting at all. A calibration-informed controller lowered the error by 4 to 6 percent against the best fixed configuration and by 15 to 19 percent against the contextual-bandit approach of our base paper, without extra shots. Most of the remaining benefit that a forecast could deliver lies in abrupt device changes, and forecasters that are more accurate on average did not capture it.
+We tested whether Transformer forecasts of real calibration drift can improve adaptive zero-noise extrapolation and Pauli twirling. On real IBM Heron calibration histories and a strict, pre-registered protocol, they did not: neither as forecasts handed to a controller nor as a decision-focused controller did the Transformer beat simply adapting to the latest calibration. Three findings should be kept apart. First, in our simulated benchmark and under the evaluated conditions, adapting to the calibration improved on the tested baselines: a calibration-informed controller lowered the error by 4 to 6 percent against the best fixed configuration and by 15 to 19 percent against our reimplementation of the base paper's contextual bandit, without extra shots. Second, Transformer forecasting gave no statistically reliable improvement over the latest calibration. Third, the decision-focused Transformer did not pass its validation criterion. Most of the remaining benefit that a forecast could deliver lies in abrupt device changes, and forecasters that are more accurate on average did not capture it.
 
 The title describes the system we set out to build. Two of its words are not supported by our evidence: the Transformer was not the source of the gain, and real-time operation was not tested, since decisions were made once per daily calibration in simulation. Several further limits apply. Circuit execution was simulated, readout and idle errors were not modelled, chains had four or six qubits, and the next published calibration stood in for the true state during execution. The controller assumes a reasonably accurate noise model, and its advantage shrank when a coherent error was left out of the model. Future work should train forecasters for decision quality rather than accuracy, use them only when a large change is expected, test on newer data that has not been seen, and confirm the results on hardware.
 
