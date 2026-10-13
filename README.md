@@ -44,7 +44,7 @@ reproduce.py     single entry point
 
 ## Setup and reproduction
 
-Developed and verified with the system Python 3.14.5 on macOS (Apple M4 Pro, 14 cores).
+Developed and verified with the system Python 3.14.5 on macOS (Apple M4 Pro, 14 cores). The tests and the saved Transformer models were also checked under Python 3.11 (bit-identical forecasts).
 
 ```bash
 python3 -m pip install -r requirements.txt

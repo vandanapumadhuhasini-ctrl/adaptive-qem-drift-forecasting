@@ -131,6 +131,7 @@ doi.org itself blocks automated requests (HTTP 403), so open each DOI once in a 
 | Stage 4 regenerated with current code | **Differs by design** (finding 5). Headline comparisons change by ≤ 1.3 percentage points and every conclusion holds; captured-share range 61–87 % → 45–87 % (`docs/FINAL_TECHNICAL_DOCUMENT.md` Appendix C) |
 | Stage 5b regenerated | **Passed** (byte-identical, including network training) |
 | LaTeX compilation of report and slides | **Passed** with Tectonic 0.17 (XeTeX engine): no errors, no overfull boxes. Overleaf's default pdfLaTeX was not tested here |
+| Older Python (compatibility check) | **Passed.** In a temporary Python 3.11.15 environment (PyTorch 2.14.1, numpy 2.4.6, Qiskit 2.5.2) all 18 tests passed, and the saved Transformer models gave bit-identical test forecasts (1,732,540 values) to the original Python 3.14.5 run. Only inference was checked; retraining under 3.11 was not tested |
 | Hardware execution | **Not applicable**; the project is simulation-only by design |
 
 ---
