@@ -29,7 +29,7 @@ MARKERS = {"persistence": "o", "rolling5": "v", "window_mean": "s", "ridge": "D"
 
 def fig_mae_vs_horizon(df, set_name, fdir):
     d = df[(df.eval_set == set_name) & df.model.isin(MAIN_MODELS)]
-    fig, axes = plt.subplots(1, 5, figsize=(10.5, 2.6))
+    fig, axes = plt.subplots(1, 5, figsize=(12, 3.2))
     for ax, tgt in zip(axes, TARGETS):
         dt = d[d.target == tgt]
         for m in MAIN_MODELS:
@@ -39,11 +39,11 @@ def fig_mae_vs_horizon(df, set_name, fdir):
                         label=MODEL_LABELS[m], ms=5 if m == "transformer" else 3.5)
         ax.set_title(TARGET_LABELS[tgt])
         ax.set_xticks([1, 2, 4, 7])
-        ax.set_xlabel("horizon k (calibration cycles)")
     axes[0].set_ylabel("MAE of log value\n(≈ relative error)")
     axes[-1].legend(frameon=False, loc="center left", bbox_to_anchor=(1.02, 0.5))
     fig.suptitle(f"Forecast error vs horizon — {SET_LABELS[set_name]} (95 % cluster-bootstrap CI)",
                  x=0.01, ha="left", color=INK, fontsize=9)
+    fig.supxlabel("horizon k (calibration cycles ahead)")
     fig.tight_layout()
     save(fig, f"{fdir}/mae_vs_horizon_{set_name}")
     d.to_csv(f"{fdir}/mae_vs_horizon_{set_name}.csv", index=False)
@@ -52,7 +52,7 @@ def fig_mae_vs_horizon(df, set_name, fdir):
 def fig_skill(df, set_name, fdir):
     models = [m for m in MAIN_MODELS if m != "persistence"]
     d = df[(df.eval_set == set_name) & df.model.isin(models)]
-    fig, axes = plt.subplots(1, 4, figsize=(10.5, 2.8), sharey=True)
+    fig, axes = plt.subplots(1, 4, figsize=(12, 3.4), sharey=True)
     for ax, k in zip(axes, [1, 2, 4, 7]):
         dk = d[d.k == k]
         for i, m in enumerate(models):
@@ -66,10 +66,10 @@ def fig_skill(df, set_name, fdir):
         ax.set_yticks(range(len(TARGETS)))
         ax.set_yticklabels([TARGET_LABELS[t] for t in TARGETS])
         ax.set_title(f"k = {k}")
-        ax.set_xlabel("MAE reduction vs persistence (%)")
     axes[-1].legend(frameon=False, loc="center left", bbox_to_anchor=(1.02, 0.5))
     fig.suptitle(f"Skill relative to persistence — {SET_LABELS[set_name]}", x=0.01, ha="left",
                  color=INK, fontsize=9)
+    fig.supxlabel("MAE reduction vs persistence (%)")
     fig.tight_layout()
     save(fig, f"{fdir}/skill_vs_persistence_{set_name}")
     d.to_csv(f"{fdir}/skill_vs_persistence_{set_name}.csv", index=False)
@@ -79,7 +79,7 @@ def fig_eval_sets(df, fdir):
     sets = [s for s in ["test_primary", "test_unseen_qubit", "test_unseen_device"] if s in set(df.eval_set)]
     models = ["window_mean", "ridge", "hgb", "lstm", "transformer"]
     d = df[df.eval_set.isin(sets) & df.model.isin(models) & df.k.isin([1, 4])]
-    fig, axes = plt.subplots(2, 5, figsize=(10.5, 4.4), sharey="row")
+    fig, axes = plt.subplots(2, 5, figsize=(13, 5.6), sharey="row")
     for r, k in enumerate([1, 4]):
         for ax, tgt in zip(axes[r], TARGETS):
             x0 = np.arange(len(sets))
@@ -93,10 +93,10 @@ def fig_eval_sets(df, fdir):
                             fmt="none", ecolor=INK_2, lw=0.7, capsize=1)
             ax.axhline(0, color=INK_2, lw=0.8)
             ax.set_xticks(x0)
-            ax.set_xticklabels(["dev qubits", "unseen qubits", "unseen device"][:len(sets)], rotation=20)
-            ax.set_title(f"{TARGET_LABELS[tgt]}, k = {k}")
+            ax.set_xticklabels(["dev\nqubits", "unseen\nqubits", "unseen\ndevice"][:len(sets)])
+            ax.set_title(TARGET_LABELS[tgt] if r == 0 else "")
             ax.grid(axis="x", visible=False)
-        axes[r][0].set_ylabel("MAE reduction vs\npersistence (%)")
+        axes[r][0].set_ylabel(f"k = {k}\nMAE reduction vs\npersistence (%)")
     axes[0][-1].legend(frameon=False, loc="center left", bbox_to_anchor=(1.02, 0.5))
     fig.suptitle("Generalisation to unseen qubits and an unseen device (test, 95 % CI)",
                  x=0.01, ha="left", color=INK, fontsize=9)
@@ -107,7 +107,7 @@ def fig_eval_sets(df, fdir):
 
 def fig_ablation(df, set_name, fdir):
     d = df[(df.eval_set == set_name) & df.model.isin(ABLATIONS)]
-    fig, axes = plt.subplots(1, 5, figsize=(10.5, 2.5), sharey=True)
+    fig, axes = plt.subplots(1, 5, figsize=(12, 3.0), sharey=True)
     for ax, tgt in zip(axes, TARGETS):
         dt = d[d.target == tgt]
         ref = dt[dt.model == "transformer"].set_index("k").mae_log
@@ -118,11 +118,11 @@ def fig_ablation(df, set_name, fdir):
         ax.axhline(0, color=INK_2, lw=0.8)
         ax.set_xticks([1, 2, 4, 7])
         ax.set_title(TARGET_LABELS[tgt])
-        ax.set_xlabel("horizon k")
     axes[0].set_ylabel("MAE change vs full\nTransformer (%)")
     axes[-1].legend(frameon=False, loc="center left", bbox_to_anchor=(1.02, 0.5))
     fig.suptitle(f"Transformer ablations — {SET_LABELS[set_name]} (positive = worse)",
                  x=0.01, ha="left", color=INK, fontsize=9)
+    fig.supxlabel("horizon k (calibration cycles ahead)")
     fig.tight_layout()
     save(fig, f"{fdir}/ablation_{set_name}")
     d.to_csv(f"{fdir}/ablation_{set_name}.csv", index=False)
@@ -243,7 +243,7 @@ def fig_per_qubit(set_name, code, role, fdir, arr, meta, preds, k_idx=0):
     Y, last, split = arr["Y"], arr["last"], arr["split"]
     D = Y - last[:, None, :]
     sid = (meta.backend + ":" + meta.qubit.astype(str)).to_numpy()
-    fig, axes = plt.subplots(1, 5, figsize=(10.5, 2.4), sharey=True)
+    fig, axes = plt.subplots(1, 5, figsize=(12, 3.0), sharey=True)
     rows = []
     for ax, tgt in zip(axes, TARGETS):
         ti = TARGETS.index(tgt)
@@ -259,11 +259,11 @@ def fig_per_qubit(set_name, code, role, fdir, arr, meta, preds, k_idx=0):
                      for (sv, bv), v in r.items()]
         ax.axvline(0, color=INK_2, lw=0.8)
         ax.set_title(TARGET_LABELS[tgt])
-        ax.set_xlabel("log2(MAE_TF / MAE_comp) per qubit")
         ax.legend(frameon=False, fontsize=5.5, loc="upper left")
     axes[0].set_ylabel("qubits")
     fig.suptitle(f"Per-qubit comparison, k = 1 — {SET_LABELS[set_name]} (left of 0 = Transformer better)",
                  x=0.01, ha="left", color=INK, fontsize=9)
+    fig.supxlabel("log2(MAE Transformer / MAE comparator) per qubit")
     fig.tight_layout()
     save(fig, f"{fdir}/per_qubit_{set_name}")
     pd.DataFrame(rows).to_csv(f"{fdir}/per_qubit_{set_name}.csv", index=False)

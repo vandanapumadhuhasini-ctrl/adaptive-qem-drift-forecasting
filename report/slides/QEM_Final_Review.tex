@@ -106,7 +106,7 @@ under the same shot budget?
 
 % =========================================================== 5
 \begin{frame}{Base paper and research gaps}
-\small
+\footnotesize
 \begin{columns}[T]
 \column{0.48\textwidth}
 \begin{block}{Base paper}
@@ -114,7 +114,7 @@ R.~Rahman and D.~C.~Nguyen, ``Quantum Noise Mitigation With Adaptive Zero-Noise 
 \begin{itemize}
 \item LinUCB bandit picks the ZNE folding set online
 \item In their simulations (variational classifiers, prescribed drift): about 39--41\% fewer circuit round trips than fixed \{1,3,5\} folding
-\item We compare with \textbf{our reimplementation} of their bandit
+\item We compare with \textbf{our reimplementation} of their bandit (extended action space; results apply to this implementation, not to the method in general)
 \end{itemize}
 \end{block}
 \column{0.48\textwidth}
@@ -318,7 +318,7 @@ Oracle (reference only) & Controller fed the \textbf{true} execution state \\
 \bottomrule
 \end{tabular}
 \end{table}
-\small Fairness: same actions, same shots, same information; the bandit is tuned on validation and learns online over two months before testing.
+\small Same 14 actions, same total shot budget and test conditions for all. Information differs by design: model-based policies use calibration estimates, the bandit uses probe feedback. Our bandit uses the extended 14-action space (the paper used 3 folding sets) and a probe reward instead of a classification loss; it is tuned on validation and learns online for two months before testing.
 \end{frame}
 
 % =========================================================== 14
@@ -337,7 +337,7 @@ H4 vs bandit & $-15.0\%$ / $-18.7\%$ / $-14.5\%$ & \good{Supported} \\
 \bottomrule
 \end{tabular}
 \end{table}
-{\scriptsize Percentages: difference in mean error $\div$ the comparator's error. 1 day: 8,028 decision units from 29 chains.}
+{\scriptsize Percentages: difference in mean error $\div$ the comparator's error. R1 and R2 pooled (per protocol); e.g.\ vs best fixed at 1 day: R1 $-2.9$\%, R2 $-8.2$\%, pooled $-5.6$\%. 1 day: 8,028 decision units from 29 chains.}
 \begin{exampleblock}{In one line}
 In our simulated benchmark, adapting to the calibration helps; forecasting the calibration does not add to it.
 \end{exampleblock}
@@ -555,8 +555,8 @@ Forecasting calibration drift added no demonstrated decision value beyond using 
 \includegraphics[width=\linewidth]{examples_log_t1_k1_test_primary.pdf}
 \column{0.45\textwidth}
 \begin{itemize}\small
-\item Black: actual next-day $T_1$ of three test qubits. Dashed orange: persistence. Blue: Transformer.
-\item $T_1$ jumps up and down by tens of \textmu s from day to day; 51\% of next-day values change by more than 25\%.
+\item Black: actual next-calibration $T_1$ of three test qubits. Dashed orange: persistence. Blue: Transformer.
+\item $T_1$ jumps up and down by tens of \textmu s from day to day; 51\% of next-calibration values change by more than 25\%.
 \item Persistence chases this noise; the models predict the slowly moving level, which is where most of their accuracy comes from.
 \end{itemize}
 \end{columns}
@@ -642,7 +642,7 @@ Oracle & .0235 & .0251 & .0258 \\
 \bottomrule
 \end{tabular}
 \end{table}
-{\scriptsize Mean error per observable, incoherent regime (R1), development chains.}
+{\scriptsize Mean error per observable, incoherent regime (R1) only, development chains. Hypothesis tests pool R1 and R2.}
 \begin{itemize}\scriptsize
 \item Error grows with horizon; the bandit is highest everywhere.
 \item The gap between persistence and the oracle widens with horizon, but the Transformer does not close it.

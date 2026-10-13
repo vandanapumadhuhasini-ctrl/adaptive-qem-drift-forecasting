@@ -51,12 +51,12 @@ SET_LABELS = {
 
 def setup():
     plt.rcParams.update({
-        "font.family": "DejaVu Sans", "font.size": 8, "axes.titlesize": 9,
-        "axes.labelsize": 8, "legend.fontsize": 7, "xtick.labelsize": 7, "ytick.labelsize": 7,
+        "font.family": "DejaVu Sans", "font.size": 10, "axes.titlesize": 11,
+        "axes.labelsize": 10, "legend.fontsize": 8.5, "xtick.labelsize": 9, "ytick.labelsize": 9,
         "axes.edgecolor": INK_2, "axes.labelcolor": INK, "xtick.color": INK_2, "ytick.color": INK_2,
         "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True,
         "grid.color": GRID, "grid.linewidth": 0.6, "axes.axisbelow": True,
-        "lines.linewidth": 1.6, "lines.markersize": 4, "savefig.bbox": "tight",
+        "lines.linewidth": 1.8, "lines.markersize": 5, "savefig.bbox": "tight",
         "pdf.fonttype": 42,
     })
 

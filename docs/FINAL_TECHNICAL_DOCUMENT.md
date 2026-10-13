@@ -27,7 +27,7 @@ Every number in this document comes from a file in `results/` or `data/processed
 | Element of the title | Supported? | Evidence |
 |---|---|---|
 | *Adaptive* QEM | **Yes** | Calibration-informed adaptation beats the best fixed setting by 5.6 % (1 day) and 4.2 % (4 days) of mitigated error, and a contextual-bandit adaptive ZNE by 15–19 % (§12.3) |
-| *Non-stationary noise* | **Yes** | Real day-to-day drift: 51 % of next-day T1 values differ by more than 25 % (§12.1) |
+| *Non-stationary noise* | **Yes** | Real day-to-day drift: 51 % of next-calibration T1 values differ by more than 25 % (§12.1) |
 | *Transformer-based* | **No** | The Transformer forecasts drift better than persistence but not better than simple models (H1). Forecast-driven decisions are not better than decisions from the latest calibration (H2). A decision-focused Transformer also failed (§13) |
 | *Real-time* | **Not tested** | Decisions are made once per daily calibration, in simulation. No latency-constrained or hardware loop was built |
 
@@ -294,7 +294,7 @@ The policies differ only in the state estimate:
 ### 8.9 Contextual multi-armed bandit baseline
 Our reimplementation of the base paper's LinUCB (Eqs. 17–19). It is not the authors' code, and the deviations are listed below:
 - **Context:** intercept plus mean log T1, T2, sx and CZ of the chain.
-- **Arms:** the same 14 actions.
+- **Arms:** the same 14 actions as every other policy. The published method adapts only three folding sets; a three-arm version was not tested.
 - **Reward:** the negative error on a **Clifford probe**, i.e. the same circuit with angles snapped to multiples of π/2, so its ideal value is known. It is computed from 1/8 of the shots (1,024), leaving 7,168 for the main estimate. Variance and cost penalties follow the paper.
 - **Delayed feedback:** a decision's reward arrives only after its execution epoch (k days later).
 - **Online learning:** the bandit learns online from the last 60 training epochs onward.
@@ -491,6 +491,8 @@ Source: `results/stage5/hypotheses_test.json`.
 | Transformer-driven − best fixed (H3a) | **−5.6 %** [−11.7, −2.0] | **−4.2 %** [−9.4, −0.9] | −0.3 % [−4.4, +6.7], n.s. |
 | Transformer-driven − bandit, probe reward (H4) | **−15.0 %** [−17.9, −12.8] | **−18.7 %** [−24.1, −14.4] | **−14.5 %** [−17.8, −10.9] |
 
+- **Pooling:** the hypothesis tests pool R1 and R2, as specified in the protocol. Against best fixed at k = 1 the Transformer-driven controller is −2.9 % in R1 and −8.2 % in R2, which pool to −5.6 %; the per-regime table below shows the separate means.
+- **Information differs by design:** all policies share the action set, total shot budget and test conditions, but the model-based policies use calibration estimates while the bandit uses probe feedback.
 - **Stationary control (H3b):** −4.9 % [−7.4, −1.0] % against best fixed (30 chains, 180 units). Non-inferior, and in fact better.
 - **The credit belongs to calibration-informed adaptation.** Persistence-driven adaptation achieves the same, because the Transformer adds nothing (§12.2).
 
