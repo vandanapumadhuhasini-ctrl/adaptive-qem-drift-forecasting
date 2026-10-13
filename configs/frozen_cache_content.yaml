@@ -1,0 +1,5 @@
+note: Order-insensitive content digests of the frozen simulation caches.
+caches:
+  results/stage5: beee2e17ced71f89660013ceeb354881f38fa03263b4151bec287381170cc36b
+  results/robustness/ra: 66789e5130f3a68bde3373efc218ae0868b1e09e5982f85cefaec9bf29e930c2
+  results/robustness/rb: fbe56f65ca80bd12ac7367b2e2f5cdc15b2f85d7b9479fd09edc658930013b17

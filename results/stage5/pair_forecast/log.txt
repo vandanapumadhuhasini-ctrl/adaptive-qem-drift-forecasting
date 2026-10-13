@@ -1,0 +1,13 @@
+[23:32:17] persistence  val MAE 0.2912
+[23:32:17] window_mean  val MAE 0.2577
+[23:32:17] ridge        val MAE 0.2480
+[23:33:01] hgb          val MAE 0.2464
+[23:33:16] transformer  {'d_model': 32, 'num_layers': 1, 'dropout': 0.1, 'lr': 0.001, 'nhead': 4, 'dim_ff': 64, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2518 (14 epochs)
+[23:34:06] transformer  {'d_model': 32, 'num_layers': 1, 'dropout': 0.1, 'lr': 0.0003, 'nhead': 4, 'dim_ff': 64, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2486 (49 epochs)
+[23:34:34] transformer  {'d_model': 32, 'num_layers': 2, 'dropout': 0.1, 'lr': 0.001, 'nhead': 4, 'dim_ff': 64, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2478 (14 epochs)
+[23:35:39] transformer  {'d_model': 32, 'num_layers': 2, 'dropout': 0.1, 'lr': 0.0003, 'nhead': 4, 'dim_ff': 64, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2497 (33 epochs)
+[23:36:05] transformer  {'d_model': 64, 'num_layers': 1, 'dropout': 0.1, 'lr': 0.001, 'nhead': 4, 'dim_ff': 128, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2510 (18 epochs)
+[23:36:37] transformer  {'d_model': 64, 'num_layers': 1, 'dropout': 0.1, 'lr': 0.0003, 'nhead': 4, 'dim_ff': 128, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2471 (23 epochs)
+[23:37:15] transformer  {'d_model': 64, 'num_layers': 2, 'dropout': 0.1, 'lr': 0.001, 'nhead': 4, 'dim_ff': 128, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2473 (14 epochs)
+[23:37:53] transformer  {'d_model': 64, 'num_layers': 2, 'dropout': 0.1, 'lr': 0.0003, 'nhead': 4, 'dim_ff': 128, 'weight_decay': 0.0001, 'batch_size': 256} val MAE 0.2479 (14 epochs)
+[23:40:39] transformer  ensemble val MAE 0.2465

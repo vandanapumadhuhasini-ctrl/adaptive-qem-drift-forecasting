@@ -1,0 +1,41 @@
+{
+  "R1_incoherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4_s12": "zne_exp_135",
+      "hea_d4_s13": "zne_exp_135",
+      "hea_d8_s12": "zne_exp_135",
+      "hea_d8_s13": "zne_exp_135",
+      "qaoa_d2_s12": "zne_exp_135",
+      "qaoa_d2_s13": "zne_exp_135",
+      "qaoa_d4_s12": "zne_exp_135",
+      "qaoa_d4_s13": "zne_exp_135"
+    }
+  },
+  "R2_coherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4_s12": "zne_exp_135",
+      "hea_d4_s13": "zne_exp_135",
+      "hea_d8_s12": "zne_exp_135",
+      "hea_d8_s13": "zne_exp_135",
+      "qaoa_d2_s12": "zne_exp_135",
+      "qaoa_d2_s13": "zne_exp_135",
+      "qaoa_d4_s12": "zne_linear_13",
+      "qaoa_d4_s13": "zne_exp_135"
+    }
+  },
+  "R3_mismatch": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4_s12": "zne_exp_135",
+      "hea_d4_s13": "zne_exp_135",
+      "hea_d8_s12": "zne_exp_135",
+      "hea_d8_s13": "zne_exp_135",
+      "qaoa_d2_s12": "zne_exp_135",
+      "qaoa_d2_s13": "zne_exp_135",
+      "qaoa_d4_s12": "zne_linear_13",
+      "qaoa_d4_s13": "zne_exp_135"
+    }
+  }
+}

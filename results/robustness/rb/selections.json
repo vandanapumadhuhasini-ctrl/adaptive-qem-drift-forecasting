@@ -1,0 +1,16 @@
+{
+  "R1_incoherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4_n6": "zne_exp_135",
+      "tfim_d3_n6": "zne_exp_135"
+    }
+  },
+  "R2_coherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4_n6": "zne_exp_135",
+      "tfim_d3_n6": "zne_exp_135"
+    }
+  }
+}

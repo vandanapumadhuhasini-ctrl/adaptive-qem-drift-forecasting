@@ -1,0 +1,230 @@
+{
+  "test_primary": {
+    "mean_ratio_to_persistence": {
+      "hgb": 0.79,
+      "lstm": 0.7989,
+      "persistence": 1.0,
+      "ridge": 0.7911,
+      "rolling5": 0.8265,
+      "tf_no_positional": 0.7935,
+      "tf_state_env": 0.7853,
+      "tf_targets_only": 0.786,
+      "transformer": 0.7873,
+      "window_mean": 0.8043
+    },
+    "per_target_ratio_to_persistence": {
+      "log_cz_err_mean": {
+        "hgb": 0.8552,
+        "lstm": 0.879,
+        "persistence": 1.0,
+        "ridge": 0.8534,
+        "rolling5": 0.8783,
+        "tf_no_positional": 0.8501,
+        "tf_state_env": 0.8463,
+        "tf_targets_only": 0.8434,
+        "transformer": 0.8404,
+        "window_mean": 0.8867
+      },
+      "log_ro_err": {
+        "hgb": 0.7752,
+        "lstm": 0.7874,
+        "persistence": 1.0,
+        "ridge": 0.7704,
+        "rolling5": 0.8046,
+        "tf_no_positional": 0.8015,
+        "tf_state_env": 0.7923,
+        "tf_targets_only": 0.7718,
+        "transformer": 0.795,
+        "window_mean": 0.7836
+      },
+      "log_sx_err": {
+        "hgb": 0.7815,
+        "lstm": 0.8004,
+        "persistence": 1.0,
+        "ridge": 0.8088,
+        "rolling5": 0.8714,
+        "tf_no_positional": 0.7977,
+        "tf_state_env": 0.7868,
+        "tf_targets_only": 0.7922,
+        "transformer": 0.792,
+        "window_mean": 0.8492
+      },
+      "log_t1": {
+        "hgb": 0.7583,
+        "lstm": 0.7541,
+        "persistence": 1.0,
+        "ridge": 0.7592,
+        "rolling5": 0.788,
+        "tf_no_positional": 0.748,
+        "tf_state_env": 0.7384,
+        "tf_targets_only": 0.7534,
+        "transformer": 0.7465,
+        "window_mean": 0.7482
+      },
+      "log_t2": {
+        "hgb": 0.7798,
+        "lstm": 0.7736,
+        "persistence": 1.0,
+        "ridge": 0.7636,
+        "rolling5": 0.7904,
+        "tf_no_positional": 0.77,
+        "tf_state_env": 0.7627,
+        "tf_targets_only": 0.7693,
+        "transformer": 0.7623,
+        "window_mean": 0.7539
+      }
+    }
+  },
+  "test_unseen_device": {
+    "mean_ratio_to_persistence": {
+      "hgb": 0.7971,
+      "lstm": 0.8168,
+      "persistence": 1.0,
+      "ridge": 0.7794,
+      "rolling5": 0.8266,
+      "tf_no_positional": 0.784,
+      "tf_state_env": 0.7841,
+      "tf_targets_only": 0.7766,
+      "transformer": 0.785,
+      "window_mean": 0.7861
+    },
+    "per_target_ratio_to_persistence": {
+      "log_cz_err_mean": {
+        "hgb": 0.8594,
+        "lstm": 0.8788,
+        "persistence": 1.0,
+        "ridge": 0.8526,
+        "rolling5": 0.8978,
+        "tf_no_positional": 0.8484,
+        "tf_state_env": 0.8574,
+        "tf_targets_only": 0.8382,
+        "transformer": 0.8501,
+        "window_mean": 0.8849
+      },
+      "log_ro_err": {
+        "hgb": 0.7682,
+        "lstm": 0.7765,
+        "persistence": 1.0,
+        "ridge": 0.7593,
+        "rolling5": 0.7988,
+        "tf_no_positional": 0.7721,
+        "tf_state_env": 0.7777,
+        "tf_targets_only": 0.753,
+        "transformer": 0.7724,
+        "window_mean": 0.7667
+      },
+      "log_sx_err": {
+        "hgb": 0.799,
+        "lstm": 0.823,
+        "persistence": 1.0,
+        "ridge": 0.7808,
+        "rolling5": 0.8515,
+        "tf_no_positional": 0.7807,
+        "tf_state_env": 0.7804,
+        "tf_targets_only": 0.7752,
+        "transformer": 0.7804,
+        "window_mean": 0.7843
+      },
+      "log_t1": {
+        "hgb": 0.7692,
+        "lstm": 0.8025,
+        "persistence": 1.0,
+        "ridge": 0.7601,
+        "rolling5": 0.7918,
+        "tf_no_positional": 0.7579,
+        "tf_state_env": 0.7423,
+        "tf_targets_only": 0.7552,
+        "transformer": 0.7599,
+        "window_mean": 0.7456
+      },
+      "log_t2": {
+        "hgb": 0.7898,
+        "lstm": 0.8031,
+        "persistence": 1.0,
+        "ridge": 0.7444,
+        "rolling5": 0.7933,
+        "tf_no_positional": 0.7612,
+        "tf_state_env": 0.7625,
+        "tf_targets_only": 0.7615,
+        "transformer": 0.7622,
+        "window_mean": 0.7488
+      }
+    }
+  },
+  "test_unseen_qubit": {
+    "mean_ratio_to_persistence": {
+      "hgb": 0.7927,
+      "lstm": 0.8069,
+      "persistence": 1.0,
+      "ridge": 0.7839,
+      "rolling5": 0.8331,
+      "tf_no_positional": 0.7866,
+      "tf_state_env": 0.7809,
+      "tf_targets_only": 0.7837,
+      "transformer": 0.7812,
+      "window_mean": 0.7996
+    },
+    "per_target_ratio_to_persistence": {
+      "log_cz_err_mean": {
+        "hgb": 0.8895,
+        "lstm": 0.9586,
+        "persistence": 1.0,
+        "ridge": 0.8639,
+        "rolling5": 0.8924,
+        "tf_no_positional": 0.8683,
+        "tf_state_env": 0.8658,
+        "tf_targets_only": 0.864,
+        "transformer": 0.8612,
+        "window_mean": 0.9191
+      },
+      "log_ro_err": {
+        "hgb": 0.7796,
+        "lstm": 0.7868,
+        "persistence": 1.0,
+        "ridge": 0.7693,
+        "rolling5": 0.8084,
+        "tf_no_positional": 0.7956,
+        "tf_state_env": 0.7882,
+        "tf_targets_only": 0.7713,
+        "transformer": 0.7896,
+        "window_mean": 0.7797
+      },
+      "log_sx_err": {
+        "hgb": 0.7838,
+        "lstm": 0.7914,
+        "persistence": 1.0,
+        "ridge": 0.793,
+        "rolling5": 0.8872,
+        "tf_no_positional": 0.7891,
+        "tf_state_env": 0.783,
+        "tf_targets_only": 0.7891,
+        "transformer": 0.7836,
+        "window_mean": 0.8299
+      },
+      "log_t1": {
+        "hgb": 0.7433,
+        "lstm": 0.7409,
+        "persistence": 1.0,
+        "ridge": 0.7464,
+        "rolling5": 0.7876,
+        "tf_no_positional": 0.7306,
+        "tf_state_env": 0.7222,
+        "tf_targets_only": 0.7392,
+        "transformer": 0.7305,
+        "window_mean": 0.7322
+      },
+      "log_t2": {
+        "hgb": 0.7673,
+        "lstm": 0.757,
+        "persistence": 1.0,
+        "ridge": 0.7469,
+        "rolling5": 0.7898,
+        "tf_no_positional": 0.7496,
+        "tf_state_env": 0.7453,
+        "tf_targets_only": 0.7549,
+        "transformer": 0.7413,
+        "window_mean": 0.7371
+      }
+    }
+  }
+}

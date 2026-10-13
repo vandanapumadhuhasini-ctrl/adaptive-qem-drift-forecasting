@@ -1,0 +1,46 @@
+{
+  "ridge": {
+    "k1": {
+      "alpha": 1000
+    },
+    "k4": {
+      "alpha": 0.1
+    },
+    "k7": {
+      "alpha": 0.1
+    }
+  },
+  "hgb": {
+    "k1": {
+      "learning_rate": 0.03,
+      "max_iter": 200,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 40,
+      "l2_regularization": 1.0
+    },
+    "k4": {
+      "learning_rate": 0.03,
+      "max_iter": 200,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 40,
+      "l2_regularization": 1.0
+    },
+    "k7": {
+      "learning_rate": 0.03,
+      "max_iter": 200,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 40,
+      "l2_regularization": 1.0
+    }
+  },
+  "transformer": {
+    "d_model": 64,
+    "num_layers": 1,
+    "dropout": 0.1,
+    "lr": 0.0003,
+    "nhead": 4,
+    "dim_ff": 128,
+    "weight_decay": 0.0001,
+    "batch_size": 256
+  }
+}

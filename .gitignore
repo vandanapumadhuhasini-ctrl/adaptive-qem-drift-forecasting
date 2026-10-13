@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments (not used: the project runs on the system Python)
+qem_env/
+qem_env_new/
+.venv/
+venv/
+
+# macOS / editors
+.DS_Store
+.vscode/
+.ipynb_checkpoints/
+
+# Run logs
+logs/
+*.log
+
+# Unused QSBench download (244 MB, above GitHub's 100 MB file limit)
+data/raw/qsbench_raw.csv
+
+# Credentials
+.env
+*.token
+
+# Raw IBM calibration-drift parquet (70.5 MB; re-download with scripts/, revision pinned in PROVENANCE.json)
+data/raw/ibm_calibration_drift/data/
+data/raw/ibm_calibration_drift/.cache/
+
+# Stage 3 prediction arrays (~200 MB; hashes frozen in configs/frozen_stage3.yaml)
+results/stage3/predictions/
+
+# Stage 4 simulation caches and per-unit policy tables (regenerable: experiments/stage4_*.py)
+results/stage4/sim_*.npz
+results/stage4/policy_*.csv
+
+# Stage 5 simulation cache and per-unit policy tables (regenerable: experiments/stage5_*.py)
+results/stage5/sim_arrays.npy
+results/stage5/policy_*.parquet
+results/stage5/pair_forecast/predictions/
+
+# Robustness simulation caches and per-unit tables (regenerable: experiments/robust_*.py)
+results/robustness/*/sim_arrays.npy
+results/robustness/*/policy_*.parquet
+
+# Stage 5b training-target cache (regenerable: experiments/s5b_train_targets.py)
+results/stage5b/train_arrays.npy

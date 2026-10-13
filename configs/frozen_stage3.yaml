@@ -1,0 +1,16 @@
+frozen_utc: '2026-10-12T15:32:43Z'
+config_sha256: 0a2a07c0bd1348cc4bd28837eab7443ba3f4ce0b8a67e4a21f3282fb80995452
+selected_sha256: 9c5a00c424567f77986a139b99ee984dcc038565b1c34f38559500c0b0e4d572
+data_sha256: 18cf16aaaabc293833045d5c091c9b1dae62e0e5ca9a0b6eac1201ef15fb0159
+predictions:
+  hgb.npz: 93ff3d5f76c1db5d6e7086e82ad1a2d77fc9ef2407de2115f162bb308847b5ba
+  lstm.npz: c0fef8b7f1a3d69b8200e45cf53a007be3b72506fc6b334241b1b67af56aa79c
+  persistence.npz: 5d630204d3c1efb8cdaadd11d0bb2876ad10edcfd299810b678d0814e79980af
+  ridge.npz: a634d96a1d1a852bf7782327785c98df9675b136684fc44f8a9e5ace98a6f09e
+  rolling5.npz: 40c9f1ff96f79b07a3c7017ac98730c086595fcd25a2eacc3e259410a68de21c
+  tf_no_positional.npz: e8638acd2e76d2128fa53dfa4a2e4ee66033e7ea642d5ef4d428bab274b23dbd
+  tf_state_env.npz: c51ac4928bacb492c3ded6cc2cf3fa94bd7f1d2a89516a18a75bec70c792a9ab
+  tf_targets_only.npz: 28c18999a3d2d7e7848770bf8cca104cccddc9b1637628c4071979c137491c9f
+  transformer.npz: a9501665a69514f2e8deac1e7c4135055200d10e04273ac78220bdcfb0cc2970
+  window_mean.npz: 8ff73fbc6658590e4c6190d76acf307884cb05c160103d09ce2e32f688271490
+note: "Created before any test-set metric was computed (PROTOCOL \xA76)."

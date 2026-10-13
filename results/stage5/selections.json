@@ -1,0 +1,290 @@
+{
+  "k1/R1_incoherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 0.0
+    }
+  },
+  "k1/R2_coherent": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "zne_linear_13"
+    },
+    "cmab_probe": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k1/R3_mismatch": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "zne_linear_13"
+    },
+    "cmab_probe": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k4/R1_incoherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "intercept",
+      "eta": 0.0,
+      "rho": 0.97,
+      "lam_c": 0.0,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "intercept",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 0.97,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k4/R2_coherent": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "tw_zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_warm": {
+      "ctx": "intercept",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "intercept",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k4/R3_mismatch": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "tw_zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "full",
+      "eta": 0.1,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_warm": {
+      "ctx": "intercept",
+      "eta": 0.3,
+      "rho": 0.9,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "intercept",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k7/R1_incoherent": {
+    "best_fixed": "zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "intercept",
+      "eta": 0.1,
+      "rho": 0.97,
+      "lam_c": 0.02,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.02,
+      "beta": 1.0
+    },
+    "cmab_oracle": {
+      "ctx": "full",
+      "eta": 0.3,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k7/R2_coherent": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "tw_zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "intercept",
+      "eta": 0.3,
+      "rho": 0.9,
+      "lam_c": 0.0,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "intercept",
+      "eta": 0.0,
+      "rho": 1.0,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "intercept",
+      "eta": 0.3,
+      "rho": 0.97,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  },
+  "k7/R3_mismatch": {
+    "best_fixed": "tw_zne_exp_135",
+    "best_fixed_per_circuit": {
+      "hea_d4": "tw_zne_exp_135",
+      "hea_d8": "zne_exp_135",
+      "tfim_d3": "zne_exp_135",
+      "tfim_d6": "zne_exp_135",
+      "qaoa_d2": "zne_exp_135",
+      "qaoa_d4": "tw_zne_exp_135"
+    },
+    "cmab_probe": {
+      "ctx": "intercept",
+      "eta": 0.3,
+      "rho": 0.9,
+      "lam_c": 0.0,
+      "beta": 1.0
+    },
+    "cmab_warm": {
+      "ctx": "full",
+      "eta": 0.0,
+      "rho": 0.9,
+      "lam_c": 0.0,
+      "beta": 0.0
+    },
+    "cmab_oracle": {
+      "ctx": "intercept",
+      "eta": 0.3,
+      "rho": 0.97,
+      "lam_c": 0.0,
+      "beta": 0.0
+    }
+  }
+}

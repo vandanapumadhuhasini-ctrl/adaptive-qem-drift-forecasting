@@ -1,0 +1,14 @@
+{
+  "dataset": "phanerozoic/qiskit-calibration-drift",
+  "url": "https://huggingface.co/datasets/phanerozoic/qiskit-calibration-drift",
+  "revision": "539bc9994d664a7b559dee6edf12d95976f58af2",
+  "last_modified": "2026-10-12 13:38:29+00:00",
+  "file": "data/train-00000-of-00001.parquet",
+  "bytes": 70498179,
+  "sha256": "6c9feb0f2b526b708857d5a4a2aa94fd03770783b0612c6d0f19f7507a752f0b",
+  "hf_lfs_sha256": "6c9feb0f2b526b708857d5a4a2aa94fd03770783b0612c6d0f19f7507a752f0b",
+  "license": "CC-BY-4.0 (SN column CC-BY-NC-4.0 per WDC-SILSO; excluded from modelling)",
+  "upstream_collector": "https://github.com/CharlesCNorton/qiskit-calibration-drift",
+  "retrieved_utc": "2026-10-12T13:46:28+00:00",
+  "retrieved_with": "huggingface_hub.hf_hub_download (revision-pinned)"
+}

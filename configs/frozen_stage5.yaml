@@ -1,0 +1,26 @@
+frozen_utc: '2026-10-12T19:25:22Z'
+note: Created before any Stage 5 test-period metric was computed.
+files:
+  results/stage5/decisions.parquet: 45beef38c74cf55fd7dd48e5ebe4eea892983fa73724da0e709565dc3fd7a14c
+  results/stage5/epoch_states.parquet: a816d9c33f519608f1ecaf63981725c9f20e9f76375fb9d7278262a5d05bf8d5
+  results/stage5/epoch_states.npy: 31c2ccde6a479628ec306be992a8a829d99d58e2221d4559081dff671d0ed16f
+  results/stage5/forecast_states.npy: adf8097ac2bff9a52c8a63721cbd894d5e587b72e7c76c54b8aa6f7db9efe278
+  results/stage5/sim_index.parquet: 8a0d05a205f72d4313b069c09762df55c7f1a67c621219fc275c379e6ab332cd
+  results/stage5/sim_arrays.npy: 685f812d8556fb0afb1dd9deb34a192a95f23b2e16aacd36e788d356dfdd6516
+  results/stage5/selections.json: e9cac0cb123baa65a54f924f3ed6395195de531f9bfa64b4053ae461d1c11361
+  data/processed/drift_v3/cce.parquet: 18cf16aaaabc293833045d5c091c9b1dae62e0e5ca9a0b6eac1201ef15fb0159
+  data/processed/drift_v3/pair_epochs.parquet: 3f561c524d6b09d4249605f35e7b3a9626624e7545a53238e75949b7cec79940
+  src/qem/device.py: fb17b6e0e207d6de1716708b50760d6d3a20dbc55ada73c85f8e8deeef942e73
+  src/qem/mitigation.py: 6c82f49fde77fbab99ecb8174a70f3d30e469e08b3963c960970236fe96d8c07
+  src/qem/policies.py: 4e44a0a07e6a19595d69e8bbe6a4905dc88989e42d50022748f963294c168a34
+  src/qem/benchmarks.py: d09777b04c23c7ff6a23b8309ca53ba8ba6e0f344c6d10c7fad184feb715aa4e
+  experiments/stage5_policies.py: 79eb2edcc6fed0b452a4d0f9c541ee2739186de3517e5b1e0d94f4f380f89425
+  experiments/stage5_simulate.py: 56b86fdba978173ca716cf58af010eab79f4d0b197876c0c9cae555b01f60b16
+  experiments/stage5_decisions.py: 391111cfd0152d1c2b45cbf031b9e56333e059b9ebcc9f9d3191648f79e30523
+  src/evaluation/stats.py: a1aec0909d9a4d94b96ecb91a1d8b1d182e1a4c402568db80741b3f3bfdeb98b
+  docs/PROTOCOL.md: 7114d510da6ff763b143687da407db9c8e48877de9b999d37bd8fc57f7d87e2c
+  results/stage5/pair_forecast/predictions/hgb.npz: 978c61ceb318831f28f708d4e0798ce33e1208821b68c5a978aa01d144877639
+  results/stage5/pair_forecast/predictions/persistence.npz: d030392a21c886d6672f7b229c878ec33d249f599fe53f9ae1252abf0377483d
+  results/stage5/pair_forecast/predictions/ridge.npz: df1672b34c7d8878b2eb3523d666f77a7958e32ecda5128c2bf044a41ffc532f
+  results/stage5/pair_forecast/predictions/transformer.npz: 3d560fb0e80f88bb14f99bd87e80c1789a81b62c6945ff7e81d03eb147d65d25
+  results/stage5/pair_forecast/predictions/window_mean.npz: 96fda1a09ef4b0ef2b32b2983c25c2c34d437316c0b93aa7de93b5f8c7d41783

@@ -1,0 +1,171 @@
+{
+  "source": {
+    "parquet": "data/raw/ibm_calibration_drift/data/train-00000-of-00001.parquet",
+    "provenance": "data/raw/ibm_calibration_drift/PROVENANCE.json",
+    "revision": "539bc9994d664a7b559dee6edf12d95976f58af2",
+    "sha256": "6c9feb0f2b526b708857d5a4a2aa94fd03770783b0612c6d0f19f7507a752f0b"
+  },
+  "total_rows_in_file": 16140252,
+  "rows_selected_families": {
+    "T1": 101891,
+    "T2": 105195,
+    "cz_error": 2142373,
+    "prob_meas0_prep1": 497252,
+    "prob_meas1_prep0": 521141,
+    "readout_error": 521197,
+    "sx_error": 942329
+  },
+  "genuine_events": {
+    "T1": 101891,
+    "T2": 105195,
+    "cz_error": 213578,
+    "prob_meas0_prep1": 486537,
+    "prob_meas1_prep0": 504488,
+    "readout_error": 513084,
+    "sx_error": 99254
+  },
+  "clock_skew_events_adjusted": 22,
+  "failure_ceilings_in_genuine": {
+    "T1": 0,
+    "T2": 0,
+    "cz_error": 408,
+    "prob_meas0_prep1": 6,
+    "prob_meas1_prep0": 25,
+    "readout_error": 0,
+    "sx_error": 165
+  },
+  "cce_rows": 101891,
+  "cce_by_backend": {
+    "ibm_fez": 35567,
+    "ibm_kingston": 28474,
+    "ibm_marrakesh": 32292,
+    "ibm_torino": 5558
+  },
+  "qubits_by_backend": {
+    "ibm_fez": 156,
+    "ibm_kingston": 155,
+    "ibm_marrakesh": 156,
+    "ibm_torino": 133
+  },
+  "cce_by_role_and_split": {
+    "dev/train": 35198,
+    "dev/val": 6213,
+    "dev/test": 9763,
+    "heldout_device/train": 23174,
+    "heldout_device/val": 3426,
+    "heldout_device/test": 5692,
+    "heldout_qubit/train": 8844,
+    "heldout_qubit/val": 1570,
+    "heldout_qubit/test": 2453,
+    "out_of_family/train": 5558
+  },
+  "time_span_by_backend": {
+    "ibm_fez": [
+      "2026-01-18 19:02:21",
+      "2026-10-12 01:53:50"
+    ],
+    "ibm_kingston": [
+      "2026-02-05 19:29:19",
+      "2026-10-12 03:33:53"
+    ],
+    "ibm_marrakesh": [
+      "2026-01-21 01:38:53",
+      "2026-10-12 03:06:01"
+    ],
+    "ibm_torino": [
+      "2025-11-04 22:12:27",
+      "2026-04-01 07:08:19"
+    ]
+  },
+  "missing_fraction": {
+    "t2": 0.0012,
+    "sx_err": 0.0111,
+    "ro_err": 0.0,
+    "p01": 0.0,
+    "p10": 0.0,
+    "cz_err_mean": 0.006,
+    "hours_since_chip_recal": 0.3941,
+    "temperature_c": 0.0192,
+    "pressure_hpa": 0.0163,
+    "humidity_pct": 0.0265,
+    "kp_index": 0.2195,
+    "ap_index": 0.2195,
+    "solar_flux_sfu": 0.7278,
+    "bz_gsm_nt": 0.4016,
+    "dst_nt": 0.7264
+  },
+  "gap_h_quantiles": {
+    "0.5": 24.8,
+    "0.9": 40.2,
+    "0.99": 100.5,
+    "1.0": 2207.8
+  },
+  "heldout_qubits": {
+    "ibm_fez": [
+      3,
+      10,
+      14,
+      18,
+      22,
+      24,
+      25,
+      42,
+      43,
+      47,
+      49,
+      61,
+      79,
+      82,
+      86,
+      91,
+      93,
+      96,
+      97,
+      100,
+      107,
+      108,
+      113,
+      115,
+      121,
+      125,
+      134,
+      137,
+      142,
+      147,
+      155
+    ],
+    "ibm_kingston": [
+      0,
+      11,
+      15,
+      26,
+      27,
+      34,
+      38,
+      45,
+      46,
+      58,
+      60,
+      62,
+      65,
+      68,
+      76,
+      77,
+      79,
+      82,
+      83,
+      100,
+      102,
+      105,
+      108,
+      111,
+      117,
+      122,
+      126,
+      127,
+      142,
+      143,
+      145
+    ]
+  }
+}

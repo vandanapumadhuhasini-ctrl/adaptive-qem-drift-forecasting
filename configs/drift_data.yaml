@@ -1,0 +1,28 @@
+# Stage 2 data pipeline configuration (see docs/PROTOCOL.md §1–§2)
+source:
+  parquet: data/raw/ibm_calibration_drift/data/train-00000-of-00001.parquet
+  provenance: data/raw/ibm_calibration_drift/PROVENANCE.json
+  revision: 539bc9994d664a7b559dee6edf12d95976f58af2
+  sha256: 6c9feb0f2b526b708857d5a4a2aa94fd03770783b0612c6d0f19f7507a752f0b
+
+output_dir: data/processed/drift_v3
+
+# Calibration properties used for the qubit state
+families:
+  coherence: [T1, T2]                       # microseconds after harmonisation
+  qubit_error: [sx_error]                   # sx/x/id/rx are bit-identical; rz is virtual (always 0)
+  readout: [readout_error, prob_meas0_prep1, prob_meas1_prep0]
+  pair_error: [cz_error]                    # averaged over the qubit's couplings
+  excluded: [rzz_error]                     # 40 % failure ceilings, not on all backends
+
+environment:                                # ablation features only; SN excluded (CC-BY-NC)
+  [temperature_c, pressure_hpa, humidity_pct, kp_index, ap_index, solar_flux_sfu, bz_gsm_nt, dst_nt]
+
+splits:
+  t_val: "2026-08-01T00:00:00"              # UTC, fixed in PROTOCOL.md
+  t_test: "2026-09-01T00:00:00"
+  dev_backends: [ibm_fez, ibm_kingston]
+  heldout_device: ibm_marrakesh
+  out_of_family: ibm_torino
+  heldout_qubit_fraction: 0.20
+  heldout_qubit_seed: 2026

@@ -1,0 +1,959 @@
+{
+  "R1_incoherent/dev": {
+    "n_units": 2970,
+    "n_chains": 28,
+    "mean_error": {
+      "adaptive_oracle": 0.02393592295998034,
+      "adaptive_persistence": 0.02420081392905665,
+      "adaptive_ridge": 0.024224122456472208,
+      "adaptive_transformer": 0.0242581750959463,
+      "adaptive_window_mean": 0.024373052863241255,
+      "best_fixed": 0.025160564160808634,
+      "best_fixed_per_circuit": 0.025141606243131484,
+      "cmab_oracle": 0.025702928812361935,
+      "cmab_probe": 0.02756094819770145,
+      "cmab_warm": 0.026636856947388377,
+      "none": 0.046757498765641316
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": 5.736116688964277e-05,
+        "ci": [
+          5.350087373973904e-06,
+          0.00012029036834201913
+        ],
+        "pct": 0.23702164339511006
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -0.00011487776729495882,
+        "ci": [
+          -0.00019601853370793232,
+          -3.7194026069194306e-05
+        ],
+        "pct": -0.4713310554059241
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 3.4052639474092126e-05,
+        "ci": [
+          -4.819820959115172e-06,
+          8.187909922258683e-05
+        ],
+        "pct": 0.1405732634289666
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.0009023890648623392,
+        "ci": [
+          -0.00288456865006167,
+          0.00018714434887492546
+        ],
+        "pct": -3.5865215863003024
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.003302773101755153,
+        "ci": [
+          -0.0051752841972043905,
+          -0.002232793358344991
+        ],
+        "pct": -11.98352494284141
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.002378681851442079,
+        "ci": [
+          -0.0047019472033601115,
+          -0.0010652451773357672
+        ],
+        "pct": -8.930039516825568
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": 0.00017223893418460162,
+        "ci": [
+          7.115929902747826e-05,
+          0.00029835951040182377
+        ],
+        "pct": 0.7117071958385803
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -0.0009597502317519817,
+        "ci": [
+          -0.0029598436370525,
+          0.00010862159551261957
+        ],
+        "pct": -3.8145020342864058
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.001224641200828292,
+        "ci": [
+          -0.0031910759406181825,
+          -0.00018915555888466136
+        ],
+        "pct": -4.867304218622629
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.0024003840368928137,
+        "ci": [
+          0.0020724982300729627,
+          0.0027248698820113693
+        ],
+        "pct": 9.540263173557026
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.001224641200828292,
+      "ci": [
+        0.00018915555888466133,
+        0.003191075940618182
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 0.7836991202834349,
+      "adaptive_ridge": 0.7646661762670278,
+      "adaptive_transformer": 0.7368599588614233,
+      "adaptive_window_mean": 0.6430547143397947,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 0.015480385327820836,
+      "cmab_oracle": -0.44287637161518695,
+      "cmab_probe": -1.9600712725239868,
+      "cmab_warm": -1.2054900533978783,
+      "none": -17.635316033974274
+    }
+  },
+  "R1_incoherent/heldout_device": {
+    "n_units": 414,
+    "n_chains": 14,
+    "mean_error": {
+      "adaptive_oracle": 0.023541287016284336,
+      "adaptive_persistence": 0.024515702426747298,
+      "adaptive_ridge": 0.024097444808178554,
+      "adaptive_transformer": 0.024061173502364943,
+      "adaptive_window_mean": 0.024253152206275018,
+      "best_fixed": 0.024258722678306574,
+      "best_fixed_per_circuit": 0.024227808834489068,
+      "cmab_oracle": 0.02566632122834982,
+      "cmab_probe": 0.028840902503022077,
+      "cmab_warm": 0.02534001846932971,
+      "none": 0.05183374709083764
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": -0.00045452892438235375,
+        "ci": [
+          -0.0014703736173023521,
+          0.00035683253487198504
+        ],
+        "pct": -1.8540318220148175
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -0.00019197870391007504,
+        "ci": [
+          -0.0005311324893000163,
+          1.3980684288376463e-05
+        ],
+        "pct": -0.7915618649373106
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": -3.627130581360556e-05,
+        "ci": [
+          -0.00041891707763168725,
+          0.0003045217246161219
+        ],
+        "pct": -0.1505193023672587
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.00019754917594163134,
+        "ci": [
+          -0.0006202889038560396,
+          0.00015168745661534074
+        ],
+        "pct": -0.8143428595203416
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.004779729000657132,
+        "ci": [
+          -0.006080937810037604,
+          -0.0036105532679731934
+        ],
+        "pct": -16.572744213383377
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.0012788449669647619,
+        "ci": [
+          -0.0016703246785107625,
+          -0.0009518657215569447
+        ],
+        "pct": -5.046740469082972
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": -0.0002625502204722786,
+        "ci": [
+          -0.001390692782770392,
+          0.0007762283441242389
+        ],
+        "pct": -1.0709471664406773
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": 0.0002569797484407225,
+        "ci": [
+          -0.0008677231309690285,
+          0.0015124387873897843
+        ],
+        "pct": 1.0593292641517655
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.000717435662022234,
+        "ci": [
+          -0.0014031441338845203,
+          -0.00019775211163056188
+        ],
+        "pct": -2.957433792108942
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.004582179824715501,
+        "ci": [
+          0.003513517547941144,
+          0.005744375936932948
+        ],
+        "pct": 18.888792643699773
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.000717435662022234,
+      "ci": [
+        0.00019775211163056166,
+        0.0014031441338845198
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": -0.35819204709781827,
+      "adaptive_ridge": 0.22479767687242114,
+      "adaptive_transformer": 0.27535455288743244,
+      "adaptive_window_mean": 0.007764420318687162,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 0.04308936041786915,
+      "cmab_oracle": -1.9619857564309722,
+      "cmab_probe": -6.3868860544229475,
+      "cmab_warm": -1.5071676085564034,
+      "none": -38.43553627485623
+    }
+  },
+  "R2_coherent/dev": {
+    "n_units": 2970,
+    "n_chains": 28,
+    "mean_error": {
+      "adaptive_oracle": 0.02353606464733781,
+      "adaptive_persistence": 0.023917286742776274,
+      "adaptive_ridge": 0.0238639102743221,
+      "adaptive_transformer": 0.023921234904777947,
+      "adaptive_window_mean": 0.024002289020099692,
+      "best_fixed": 0.0261001252255502,
+      "best_fixed_per_circuit": 0.02525664901135749,
+      "cmab_oracle": 0.02549537392659757,
+      "cmab_probe": 0.028863644849401262,
+      "cmab_warm": 0.026167077982944313,
+      "none": 0.04746112430347836
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": 3.948162001672691e-06,
+        "ci": [
+          -5.466849417266903e-05,
+          6.589154061986978e-05
+        ],
+        "pct": 0.0165075664482099
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -8.105411532174667e-05,
+        "ci": [
+          -0.0001395887446289722,
+          -3.1658690740037495e-05
+        ],
+        "pct": -0.3376932727285775
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 5.732463045584477e-05,
+        "ci": [
+          1.8092871051069586e-05,
+          0.00010087229269558712
+        ],
+        "pct": 0.24021474182932576
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.0021788903207722483,
+        "ci": [
+          -0.004668995250862626,
+          -0.0008361414294580417
+        ],
+        "pct": -8.348198722967302
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.004942409944623318,
+        "ci": [
+          -0.00756422351479983,
+          -0.003495682754908754
+        ],
+        "pct": -17.12330501019812
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.002245843078166371,
+        "ci": [
+          -0.004650337434604269,
+          -0.0009463222014481285
+        ],
+        "pct": -8.582704876831148
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": 8.500227732341935e-05,
+        "ci": [
+          1.0565308674498784e-05,
+          0.00016606716346833413
+        ],
+        "pct": 0.35540100446005873
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -0.002182838482773921,
+        "ci": [
+          -0.004669821536303629,
+          -0.0008469477509103107
+        ],
+        "pct": -8.363325707867006
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.002564060578212386,
+        "ci": [
+          -0.005023963776981759,
+          -0.0012742222607398663
+        ],
+        "pct": -9.8239397552865
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.002763519623851069,
+        "ci": [
+          0.002473192334935915,
+          0.0030603611308814885
+        ],
+        "pct": 10.588146991516258
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.002564060578212386,
+      "ci": [
+        0.0012742222607398663,
+        0.005023963776981759
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 0.8513209482342864,
+      "adaptive_ridge": 0.8721381118019996,
+      "adaptive_transformer": 0.8497811398400459,
+      "adaptive_window_mean": 0.8181695172401401,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 0.3289611101079201,
+      "cmab_oracle": 0.23585686862915123,
+      "cmab_probe": -1.0777903015761594,
+      "cmab_warm": -0.026112002954626158,
+      "none": -8.330926055117096
+    }
+  },
+  "R2_coherent/heldout_device": {
+    "n_units": 414,
+    "n_chains": 14,
+    "mean_error": {
+      "adaptive_oracle": 0.023076144827283967,
+      "adaptive_persistence": 0.02418081529859253,
+      "adaptive_ridge": 0.02370686994415593,
+      "adaptive_transformer": 0.023864559595910786,
+      "adaptive_window_mean": 0.02410827619006604,
+      "best_fixed": 0.02521989960818615,
+      "best_fixed_per_circuit": 0.02463972961263552,
+      "cmab_oracle": 0.025264093645748543,
+      "cmab_probe": 0.027780452409623024,
+      "cmab_warm": 0.024930991900188243,
+      "none": 0.05221562854922255
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": -0.000316255702681747,
+        "ci": [
+          -0.0010349891399306838,
+          0.00025315606390914234
+        ],
+        "pct": -1.3078785755423017
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -0.00024371659415525724,
+        "ci": [
+          -0.0007811976281390478,
+          8.779501050256207e-05
+        ],
+        "pct": -1.0109250127791474
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 0.00015768965175485584,
+        "ci": [
+          -3.970326731982034e-05,
+          0.0004250890640550978
+        ],
+        "pct": 0.6651643684987124
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.0013553400122753674,
+        "ci": [
+          -0.0022138730765591656,
+          -0.0005838484537165467
+        ],
+        "pct": -5.374089640846295
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.003915892813712238,
+        "ci": [
+          -0.005207175961441342,
+          -0.002987356442581681
+        ],
+        "pct": -14.095856885166457
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.001066432304277453,
+        "ci": [
+          -0.0015538257301526462,
+          -0.0006793866801008979
+        ],
+        "pct": -4.277536604026577
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": -7.253910852648988e-05,
+        "ci": [
+          -0.0010642198974059906,
+          0.0009346636058032021
+        ],
+        "pct": -0.29998619827641665
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -0.00103908430959362,
+        "ci": [
+          -0.0023300876528032895,
+          0.0003491534793519456
+        ],
+        "pct": -4.120096930347584
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.0021437547809021844,
+        "ci": [
+          -0.0030764060826146866,
+          -0.0012889742862671359
+        ],
+        "pct": -8.500251048605843
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.0025605528014368707,
+        "ci": [
+          0.001622719131410739,
+          0.0034684465899594385
+        ],
+        "pct": 10.15290640017353
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.0021437547809021844,
+      "ci": [
+        0.0012889742862671355,
+        0.003076406082614686
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 0.4847029701579621,
+      "adaptive_ridge": 0.7057848581886195,
+      "adaptive_transformer": 0.6322271671879289,
+      "adaptive_window_mean": 0.5185403797221112,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 0.2706326305224476,
+      "cmab_oracle": -0.020615248514473276,
+      "cmab_probe": -1.1944242990139384,
+      "cmab_warm": 0.13476714341195753,
+      "none": -12.592731772089824
+    }
+  },
+  "R3_mismatch/dev": {
+    "n_units": 2970,
+    "n_chains": 28,
+    "mean_error": {
+      "adaptive_oracle": 0.025379550892352033,
+      "adaptive_persistence": 0.025572012225474387,
+      "adaptive_ridge": 0.025555704614458115,
+      "adaptive_transformer": 0.02565485696447277,
+      "adaptive_window_mean": 0.02565770355178992,
+      "best_fixed": 0.0261001252255502,
+      "best_fixed_per_circuit": 0.02525664901135749,
+      "cmab_oracle": 0.02549537392659757,
+      "cmab_probe": 0.028863644849401262,
+      "cmab_warm": 0.028194900663805204,
+      "none": 0.04746112430347836
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": 8.284473899838062e-05,
+        "ci": [
+          -3.439010439046038e-05,
+          0.000199946069744343
+        ],
+        "pct": 0.32396644529933455
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -2.846587317151392e-06,
+        "ci": [
+          -0.0001655878461548828,
+          0.00014781627997754844
+        ],
+        "pct": -0.011094474263472459
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 9.915235001465111e-05,
+        "ci": [
+          -3.089400678339038e-05,
+          0.00021891351195553758
+        ],
+        "pct": 0.3879851935624415
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.00044526826107742755,
+        "ci": [
+          -0.0031093725134535553,
+          0.0010072181521035848
+        ],
+        "pct": -1.7060004778886695
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.0032087878849284966,
+        "ci": [
+          -0.005989202374154242,
+          -0.0016687686980250257
+        ],
+        "pct": -11.117057120369394
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.0025400436993324362,
+        "ci": [
+          -0.0049683943590276974,
+          -0.0010916553672935475
+        ],
+        "pct": -9.008876213538786
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": 8.569132631553203e-05,
+        "ci": [
+          -7.811908860070743e-05,
+          0.0002565301629583929
+        ],
+        "pct": 0.33509809693492887
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -0.000528113000075808,
+        "ci": [
+          -0.0032126100523015484,
+          0.0009369038561793849
+        ],
+        "pct": -2.023411748073999
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.0007205743331981627,
+        "ci": [
+          -0.003374770482836385,
+          0.000706508584359426
+        ],
+        "pct": -2.760807953874378
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.002763519623851069,
+        "ci": [
+          0.002473192334935915,
+          0.0030603611308814885
+        ],
+        "pct": 10.588146991516258
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.0007205743331981627,
+      "ci": [
+        -0.000706508584359426,
+        0.003374770482836384
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 0.7329056500414836,
+      "adaptive_ridge": 0.7555370570524598,
+      "adaptive_transformer": 0.6179352227287505,
+      "adaptive_window_mean": 0.6139847804412524,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 1.1705610029836304,
+      "cmab_oracle": 0.8392628922383689,
+      "cmab_probe": -3.8351624482454096,
+      "cmab_warm": -2.9070913877235363,
+      "none": -29.64440737587826
+    }
+  },
+  "R3_mismatch/heldout_device": {
+    "n_units": 414,
+    "n_chains": 14,
+    "mean_error": {
+      "adaptive_oracle": 0.024390074240867445,
+      "adaptive_persistence": 0.025132121036714552,
+      "adaptive_ridge": 0.02495137973972686,
+      "adaptive_transformer": 0.02502010101555027,
+      "adaptive_window_mean": 0.02504934919845378,
+      "best_fixed": 0.02521989960818615,
+      "best_fixed_per_circuit": 0.02463972961263552,
+      "cmab_oracle": 0.025264093645748543,
+      "cmab_probe": 0.027780452409623024,
+      "cmab_warm": 0.026520032567462826,
+      "none": 0.05221562854922255
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": -0.00011202002116427476,
+        "ci": [
+          -0.0011677629511494573,
+          0.0007244569921509303
+        ],
+        "pct": -0.44572450132891295
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": -2.9248182903511935e-05,
+        "ci": [
+          -0.0005502731700418712,
+          0.0004518552760445888
+        ],
+        "pct": -0.11676224668270958
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 6.872127582341261e-05,
+        "ci": [
+          -0.0003903011590126941,
+          0.000550321860722419
+        ],
+        "pct": 0.27542074442479264
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.00019979859263588056,
+        "ci": [
+          -0.0011728011873141761,
+          0.0006595342675098846
+        ],
+        "pct": -0.7922259633857851
+      },
+      "adaptive_transformer - cmab_probe": {
+        "mean_diff": -0.0027603513940727513,
+        "ci": [
+          -0.004031533013447857,
+          -0.0017513197919385127
+        ],
+        "pct": -9.936308283865738
+      },
+      "adaptive_transformer - cmab_warm": {
+        "mean_diff": -0.0014999315519125518,
+        "ci": [
+          -0.0019198418119759913,
+          -0.0010684797853150478
+        ],
+        "pct": -5.655843551839388
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": -8.277183826076294e-05,
+        "ci": [
+          -0.0013495274659212704,
+          0.0010634065101676996
+        ],
+        "pct": -0.3293468073778761
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -8.777857147160566e-05,
+        "ci": [
+          -0.001469368103933125,
+          0.001305969014317079
+        ],
+        "pct": -0.3480528187475953
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.0008298253673187085,
+        "ci": [
+          -0.0019805368174593435,
+          0.00021144772747802123
+        ],
+        "pct": -3.2903595185182843
+      },
+      "cmab_probe - best_fixed": {
+        "mean_diff": 0.0025605528014368707,
+        "ci": [
+          0.001622719131410739,
+          0.0034684465899594385
+        ],
+        "pct": 10.15290640017353
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.0008298253673187085,
+      "ci": [
+        -0.00021144772747802137,
+        0.001980536817459343
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 0.10577957113462501,
+      "adaptive_ridge": 0.32358599656566495,
+      "adaptive_transformer": 0.24077185454267333,
+      "adaptive_window_mean": 0.2055256641327354,
+      "best_fixed": 0.0,
+      "best_fixed_per_circuit": 0.6991470957621466,
+      "cmab_oracle": -0.053257033712028314,
+      "cmab_probe": -3.0856525990647943,
+      "cmab_warm": -1.5667548986572895,
+      "none": -32.53181934924897
+    }
+  },
+  "R4_stationary/dev": {
+    "n_units": 252,
+    "n_chains": 42,
+    "mean_error": {
+      "adaptive_oracle": 0.01785786301698981,
+      "adaptive_persistence": 0.01785786301698981,
+      "adaptive_ridge": 0.01785786301698981,
+      "adaptive_transformer": 0.01785786301698981,
+      "adaptive_window_mean": 0.01785786301698981,
+      "best_fixed": 0.018060683023871302
+    },
+    "comparisons": {
+      "adaptive_transformer - adaptive_persistence": {
+        "mean_diff": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "pct": 0.0
+      },
+      "adaptive_transformer - adaptive_window_mean": {
+        "mean_diff": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "pct": 0.0
+      },
+      "adaptive_transformer - adaptive_ridge": {
+        "mean_diff": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "pct": 0.0
+      },
+      "adaptive_transformer - best_fixed": {
+        "mean_diff": -0.00020282000688149422,
+        "ci": [
+          -0.0003604415213080597,
+          -7.114225017670572e-05
+        ],
+        "pct": -1.12299189689239
+      },
+      "adaptive_window_mean - adaptive_persistence": {
+        "mean_diff": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "pct": 0.0
+      },
+      "adaptive_persistence - best_fixed": {
+        "mean_diff": -0.00020282000688149422,
+        "ci": [
+          -0.0003604415213080597,
+          -7.114225017670572e-05
+        ],
+        "pct": -1.12299189689239
+      },
+      "adaptive_oracle - best_fixed": {
+        "mean_diff": -0.00020282000688149422,
+        "ci": [
+          -0.0003604415213080597,
+          -7.114225017670572e-05
+        ],
+        "pct": -1.12299189689239
+      }
+    },
+    "oracle_gain": {
+      "mean": 0.00020282000688149422,
+      "ci": [
+        7.114225017670566e-05,
+        0.00036044152130805963
+      ]
+    },
+    "captured_fraction": {
+      "adaptive_oracle": 1.0,
+      "adaptive_persistence": 1.0,
+      "adaptive_ridge": 1.0,
+      "adaptive_transformer": 1.0,
+      "adaptive_window_mean": 1.0,
+      "best_fixed": 0.0
+    }
+  },
+  "cost": {
+    "R1_incoherent/adaptive_oracle": {
+      "cost": 8.986,
+      "n_circuits": 9.504
+    },
+    "R1_incoherent/adaptive_persistence": {
+      "cost": 8.963,
+      "n_circuits": 9.296
+    },
+    "R1_incoherent/adaptive_ridge": {
+      "cost": 8.969,
+      "n_circuits": 8.691
+    },
+    "R1_incoherent/adaptive_transformer": {
+      "cost": 8.94,
+      "n_circuits": 8.868
+    },
+    "R1_incoherent/adaptive_window_mean": {
+      "cost": 8.844,
+      "n_circuits": 8.755
+    },
+    "R1_incoherent/best_fixed": {
+      "cost": 9.0,
+      "n_circuits": 3.0
+    },
+    "R1_incoherent/best_fixed_per_circuit": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R1_incoherent/cmab_oracle": {
+      "cost": 8.631,
+      "n_circuits": 10.603
+    },
+    "R1_incoherent/cmab_probe": {
+      "cost": 9.395,
+      "n_circuits": 11.637
+    },
+    "R1_incoherent/cmab_warm": {
+      "cost": 8.29,
+      "n_circuits": 7.142
+    },
+    "R1_incoherent/none": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R2_coherent/adaptive_oracle": {
+      "cost": 7.894,
+      "n_circuits": 6.028
+    },
+    "R2_coherent/adaptive_persistence": {
+      "cost": 7.952,
+      "n_circuits": 6.045
+    },
+    "R2_coherent/adaptive_ridge": {
+      "cost": 7.628,
+      "n_circuits": 5.769
+    },
+    "R2_coherent/adaptive_transformer": {
+      "cost": 7.439,
+      "n_circuits": 5.421
+    },
+    "R2_coherent/adaptive_window_mean": {
+      "cost": 7.276,
+      "n_circuits": 5.147
+    },
+    "R2_coherent/best_fixed": {
+      "cost": 9.0,
+      "n_circuits": 24.0
+    },
+    "R2_coherent/best_fixed_per_circuit": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R2_coherent/cmab_oracle": {
+      "cost": 7.39,
+      "n_circuits": 6.701
+    },
+    "R2_coherent/cmab_probe": {
+      "cost": 9.796,
+      "n_circuits": 9.869
+    },
+    "R2_coherent/cmab_warm": {
+      "cost": 7.298,
+      "n_circuits": 4.872
+    },
+    "R2_coherent/none": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R3_mismatch/adaptive_oracle": {
+      "cost": 8.986,
+      "n_circuits": 9.504
+    },
+    "R3_mismatch/adaptive_persistence": {
+      "cost": 8.963,
+      "n_circuits": 9.296
+    },
+    "R3_mismatch/adaptive_ridge": {
+      "cost": 8.969,
+      "n_circuits": 8.691
+    },
+    "R3_mismatch/adaptive_transformer": {
+      "cost": 8.94,
+      "n_circuits": 8.868
+    },
+    "R3_mismatch/adaptive_window_mean": {
+      "cost": 8.844,
+      "n_circuits": 8.755
+    },
+    "R3_mismatch/best_fixed": {
+      "cost": 9.0,
+      "n_circuits": 24.0
+    },
+    "R3_mismatch/best_fixed_per_circuit": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R3_mismatch/cmab_oracle": {
+      "cost": 7.39,
+      "n_circuits": 6.701
+    },
+    "R3_mismatch/cmab_probe": {
+      "cost": 9.796,
+      "n_circuits": 9.869
+    },
+    "R3_mismatch/cmab_warm": {
+      "cost": 7.932,
+      "n_circuits": 7.081
+    },
+    "R3_mismatch/none": {
+      "cost": NaN,
+      "n_circuits": NaN
+    },
+    "R4_stationary/adaptive_oracle": {
+      "cost": 8.623,
+      "n_circuits": 9.599
+    },
+    "R4_stationary/adaptive_persistence": {
+      "cost": 8.623,
+      "n_circuits": 9.599
+    },
+    "R4_stationary/adaptive_ridge": {
+      "cost": 8.623,
+      "n_circuits": 9.599
+    },
+    "R4_stationary/adaptive_transformer": {
+      "cost": 8.623,
+      "n_circuits": 9.599
+    },
+    "R4_stationary/adaptive_window_mean": {
+      "cost": 8.623,
+      "n_circuits": 9.599
+    },
+    "R4_stationary/best_fixed": {
+      "cost": 9.0,
+      "n_circuits": 3.0
+    }
+  }
+}

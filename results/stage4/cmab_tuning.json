@@ -1,0 +1,98 @@
+{
+  "R1_incoherent": {
+    "probe": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.3,
+        "rho": 0.97,
+        "lam_c": 0.0,
+        "beta": 0.0
+      },
+      "val_mean": 0.02756094819770145
+    },
+    "warm": {
+      "params": {
+        "ctx": "full",
+        "eta": 0.0,
+        "rho": 0.9,
+        "lam_c": 0.0,
+        "beta": 0.0
+      },
+      "val_mean": 0.026636856947388377
+    },
+    "oracle": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 0.97,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.025702928812361935
+    }
+  },
+  "R2_coherent": {
+    "probe": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 0.97,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.028863644849401262
+    },
+    "warm": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 0.9,
+        "lam_c": 0.0,
+        "beta": 0.0
+      },
+      "val_mean": 0.026167077982944313
+    },
+    "oracle": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 1.0,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.025495373926597564
+    }
+  },
+  "R3_mismatch": {
+    "probe": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 0.97,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.028863644849401262
+    },
+    "warm": {
+      "params": {
+        "ctx": "full",
+        "eta": 0.0,
+        "rho": 0.9,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.028194900663805204
+    },
+    "oracle": {
+      "params": {
+        "ctx": "intercept",
+        "eta": 0.0,
+        "rho": 1.0,
+        "lam_c": 0.02,
+        "beta": 0.0
+      },
+      "val_mean": 0.025495373926597564
+    }
+  }
+}
