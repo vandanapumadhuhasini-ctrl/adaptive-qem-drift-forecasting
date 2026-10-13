@@ -10,11 +10,11 @@ Every stage ends with a **"vs. base paper"** check: does this stage make our stu
 | Stage | Status | Gate to proceed |
 |---|---|---|
 | 1 Base paper + research direction | ✅ approved 2026-10-12; protocol frozen in `PROTOCOL.md` | — |
-| 2 Dataset expansion | ✅ acceptance criteria met (see `STAGE2_DATA_REPORT.md` §8) | — |
-| 3 Forecasting | ✅ done; **H1 not supported** (see `STAGE3_FORECASTING_REPORT.md`) | — |
-| 4 Controller + fair baselines | ✅ done (validation only; see `STAGE4_CONTROLLER_REPORT.md`) | — |
-| 5 Broad experiments | ✅ done incl. robustness R-A/R-B (`STAGE5_RESULTS.md`, `STAGE6_CONTRIBUTION.md` §3) | — |
-| 6 Contribution validation | 🟡 drafted (`STAGE6_CONTRIBUTION.md`); title / framing decision pending | Owner decision on framing |
+| 2 Dataset expansion | ✅ acceptance criteria met (see `docs/experiment_reports/STAGE2_DATA_REPORT.md` §8) | — |
+| 3 Forecasting | ✅ done; **H1 not supported** (see `docs/experiment_reports/STAGE3_FORECASTING_REPORT.md`) | — |
+| 4 Controller + fair baselines | ✅ done (validation only; see `docs/experiment_reports/STAGE4_CONTROLLER_REPORT.md`) | — |
+| 5 Broad experiments | ✅ done incl. robustness R-A/R-B (`docs/experiment_reports/STAGE5_RESULTS.md`, `docs/experiment_reports/STAGE6_CONTRIBUTION.md` §3) | — |
+| 6 Contribution validation | 🟡 drafted (`docs/experiment_reports/STAGE6_CONTRIBUTION.md`); title / framing decision pending | Owner decision on framing |
 | 7 Reproducibility + new GitHub repo | 🟡 migration done (see below); GitHub deferred to the end | Final verification; commit review |
 | 8 IEEE submission | ⬜ | Stage 6 evidence |
 
@@ -74,7 +74,7 @@ Every stage ends with a **"vs. base paper"** check: does this stage make our stu
 - H1 is evaluated exactly as pre-registered;
 - negative results are reported.
 
-**Status (2026-10-12): ✅ complete.** Details in `STAGE3_FORECASTING_REPORT.md`.
+**Status (2026-10-12): ✅ complete.** Details in `docs/experiment_reports/STAGE3_FORECASTING_REPORT.md`.
 
 | Task | Status / evidence |
 |---|---|
@@ -121,7 +121,7 @@ Every stage ends with a **"vs. base paper"** check: does this stage make our stu
 - Model-based adaptation beats best fixed (R2 −8.4 %, significant) and the faithful bandit (−11 % to −17 %, significant).
 - The Transformer does not beat persistence at k = 1 (≤ ±0.5 %); the value-of-information ceiling is 0.8–1.6 %.
 - The bandit is limited by its reward signal: Clifford-probe ranking ρ ≈ 0.45.
-- Details: `STAGE4_CONTROLLER_REPORT.md`.
+- Details: `docs/experiment_reports/STAGE4_CONTROLLER_REPORT.md`.
 
 **vs. base paper:** stronger, verifiably against the bandit approach, under real drift and equal budgets. The gain comes from model-based control, not from the Transformer.
 

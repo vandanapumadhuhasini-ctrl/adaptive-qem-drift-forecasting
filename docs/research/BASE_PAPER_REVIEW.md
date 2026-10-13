@@ -1,6 +1,6 @@
 # Base-Paper Review (verified 2026-10-12)
 
-> The full review, hypotheses and research plan are in `STAGE1_RESEARCH_PROPOSAL.md` and `PROJECT_PLAN.md`; this file is the candidate survey.
+> The full review, hypotheses and research plan are in `docs/research/STAGE1_RESEARCH_PROPOSAL.md` and `docs/research/PROJECT_PLAN.md`; this file is the candidate survey.
 
 Each citation below was verified against an authoritative record: arXiv pages, the IEEE TQE website, and the Crossref DOI registry. Crossref is the registry that IEEE DOIs are deposited in. doi.org returned HTTP 403 (bot protection) to automated requests, so **open each DOI in a browser once before citing it**.
 

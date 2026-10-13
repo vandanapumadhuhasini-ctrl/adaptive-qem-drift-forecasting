@@ -454,7 +454,7 @@ Adapting to the calibration helps; forecasting the calibration does not add to i
 \toprule
  & 1 d & 4 d & 7 d \\
 \midrule
-Best fixed & .0247 & .0263 & .0267 \\
+Best fixed & .0246 & .0263 & .0267 \\
 Bandit & .0277 & .0309 & .0316 \\
 Persistence & .0239 & .0259 & .0272 \\
 Transformer & .0239 & .0258 & .0270 \\
@@ -574,7 +574,7 @@ Stopped before testing and reported as exploratory work.
 \begin{exampleblock}{What we found}
 \begin{itemize}
 \item \textbf{Adaptation works:} calibration-informed choice of ZNE + twirling lowers error by 4--6\% vs the best fixed setting and by 15--19\% vs the base paper's bandit, with no extra shots.
-\item \textbf{Forecasting did not add value:} Transformer, ridge and window-mean forecasts gave the same decisions as the latest calibration, at 1, 4 and 7 days.
+\item \textbf{Forecasting did not add value:} Transformer, ridge and window-mean forecasts gave no significant error reduction over the latest calibration at 1, 4 or 7 days.
 \item \textbf{The ceiling is small and localised:} a perfect forecast is worth 1.4--7.1\%, mostly during abrupt device changes.
 \end{itemize}
 \end{exampleblock}

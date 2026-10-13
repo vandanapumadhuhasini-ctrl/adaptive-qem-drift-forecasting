@@ -1,7 +1,7 @@
 # Stage 4 — Forecast-Driven Adaptive QEM Controller and Fair Baselines
 
 Run 2026-10-12. **Validation period only** (target days 2026-08-01 → 2026-08-31); no test-period quantity has been computed.
-Design: `docs/STAGE4_DESIGN.md`. Framing (approved): forecast-driven versus reactive versus bandit adaptation; the forecaster may be simple.
+Design: `docs/research/STAGE4_DESIGN.md`. Framing (approved): forecast-driven versus reactive versus bandit adaptation; the forecaster may be simple.
 
 **Data and simulation:** device states are **real IBM calibration records**; circuit execution is **simulated** (Qiskit Aer density matrix).
 
@@ -9,7 +9,7 @@ Design: `docs/STAGE4_DESIGN.md`. Framing (approved): forecast-driven versus reac
 
 | Component | File | Check |
 |---|---|---|
-| Decision epochs (chip-wide daily T1 recalibration), 4-qubit chains from the real coupling map, pair-level CZ states as published | `src/qem/device.py`, `experiments/stage4_decisions.py` | 35 development chains (fez 15, kingston 20), 16 on unseen marrakesh. Decisions: 495 validation and 757 test (development); 69 validation and 149 test (marrakesh) |
+| Decision epochs (chip-wide daily T1 recalibration), 4-qubit chains from the real coupling map, pair-level CZ states as published | `src/qem/device.py`, `experiments/stage4_decisions.py` | 30 development chains (fez 12, kingston 18; 15 and 20 were requested, but the coupling graph of eligible qubits allows fewer disjoint chains), 15 on unseen marrakesh (16 requested). Decisions: 495 validation and 757 test (development); 69 validation and 149 test (marrakesh) |
 | Noise model from a calibration snapshot: relaxation (real durations: sx 24/32/36 ns, CZ 68 ns) plus depolarising top-up to IBM's reported sx/CZ errors; optional coherent CZ phase δ | `src/qem/device.py` | **Modelled gate infidelity within 0.07 % of reported** |
 | 6 benchmark circuits (HEA, TFIM, QAOA × 2 depths; 12–36 CZ), observables with \|ideal\| > 0.2, Clifford probes | `src/qem/benchmarks.py` | Probes verified Clifford |
 | CZ folding (scales 1, 2, 3, 5, 7), CZ Pauli twirling (8 instances), 14 shared actions, vectorised shot-noise estimators | `src/qem/mitigation.py` | **Noiseless folded and twirled circuits equal the ideal exactly**; vectorised estimators equal the reference to 1e-15 |

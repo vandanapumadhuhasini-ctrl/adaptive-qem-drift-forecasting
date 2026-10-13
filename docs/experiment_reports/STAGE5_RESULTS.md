@@ -45,12 +45,12 @@ Full numbers: `results/stage5/hypotheses_test.json`, `h3b_stationary.json`. Figu
 
 | k / regime | None | Best fixed | CMAB-probe | Persistence | Window mean | Ridge | **Transformer** | Oracle* |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 / R1 | 0.0458 | 0.0247 | 0.0277 | 0.0239 | 0.0241 | 0.0240 | 0.0239 | 0.0235 |
-| 1 / R2 | 0.0467 | 0.0258 | 0.0283 | 0.0236 | 0.0240 | 0.0237 | 0.0237 | 0.0233 |
+| 1 / R1 | 0.0458 | 0.0246 | 0.0277 | 0.0239 | 0.0241 | 0.0240 | 0.0239 | 0.0235 |
+| 1 / R2 | 0.0467 | 0.0258 | 0.0283 | 0.0236 | 0.0240 | 0.0236 | 0.0237 | 0.0233 |
 | 4 / R1 | 0.0489 | 0.0263 | 0.0309 | 0.0259 | 0.0260 | 0.0259 | 0.0258 | 0.0251 |
-| 4 / R2 | 0.0497 | 0.0275 | 0.0324 | 0.0258 | 0.0259 | 0.0258 | 0.0257 | 0.0248 |
+| 4 / R2 | 0.0496 | 0.0275 | 0.0324 | 0.0258 | 0.0259 | 0.0258 | 0.0257 | 0.0248 |
 | 7 / R1 | 0.0507 | 0.0267 | 0.0316 | 0.0272 | 0.0270 | 0.0271 | 0.0270 | 0.0258 |
-| 7 / R2 | 0.0514 | 0.0281 | 0.0323 | 0.0274 | 0.0271 | 0.0273 | 0.0275 | 0.0255 |
+| 7 / R2 | 0.0514 | 0.0280 | 0.0323 | 0.0274 | 0.0271 | 0.0273 | 0.0275 | 0.0255 |
 
 \* not realisable.
 
@@ -93,7 +93,7 @@ Full numbers: `results/stage5/hypotheses_test.json`, `h3b_stationary.json`. Figu
 - At k = 7 only 19 chains / 105 decisions; the unseen device is evaluated at k = 1 only.
 - Best fixed and bandit settings selected on one month of validation.
 - The value-of-information ceiling is specific to this controller and action set.
-- **Not yet done** (approved scope items 4–5): additional circuit instances (seeds) and a 6-qubit check. Recommended as robustness analyses before writing the paper.
+- Additional circuit instances and a 6-qubit check were run afterwards as pre-registered robustness analyses (`docs/experiment_reports/STAGE6_CONTRIBUTION.md` §3).
 
 ## 8. Artifacts
 

@@ -3,7 +3,8 @@ Single entry point for reproducing the study (system Python 3.14, see requiremen
 
     python3 reproduce.py --list              # show the steps
     python3 reproduce.py data forecast       # run selected stages
-    python3 reproduce.py all                 # everything (several hours on a 14-core laptop)
+    python3 reproduce.py all                 # confirmatory pipeline (several hours on a 14-core laptop)
+    python3 reproduce.py stage4 s5b          # development stage 4 and exploratory stage 5b (optional)
 
 Test-set evaluations are guarded: they only run if the frozen inputs are unchanged
 (configs/frozen_stage3.yaml, frozen_stage5.yaml, frozen_robustness.yaml).
@@ -42,6 +43,9 @@ STEPS = {
         "-m experiments.stage5_stationary",
         "-m experiments.plot_stage5",
     ],
+    "stage6": [  # exploratory test-period analysis by size of device change (~1 min; needs qem)
+        "-m experiments.stage6_change_quartiles",
+    ],
     "robustness": [  # pre-registered robustness (~80 min)
         "-m experiments.robust_check",
         "-m experiments.robust_decisions_6q",
@@ -52,9 +56,23 @@ STEPS = {
         "-m experiments.robust_policies ra --split test",
         "-m experiments.robust_policies rb --split test",
     ],
+    # Optional, not part of "all":
+    "stage4": [  # development stage, validation only (~65 min; needs forecast)
+        "-m experiments.stage4_decisions",
+        "-m experiments.stage4_simulate --split val",
+        "-m experiments.stage4_simulate --split train --bandit-only",
+        "-m experiments.stage4_simulate --split val --stationary",
+        "-m experiments.stage4_policies --split val",
+        "-m experiments.plot_stage4 --split val",
+    ],
+    "s5b": [  # exploratory decision-focused Transformer, validation only (~75 min; needs qem)
+        "-m experiments.s5b_train_targets",
+        "-m experiments.s5b_dft",
+        "-m experiments.s5b_report",
+    ],
 }
-STEPS["all"] = [s for k in ["data", "forecast", "pair_forecast", "qem", "robustness"] for s in STEPS[k]]
-STEPS["resume_from_qem"] = [s for k in ["qem", "robustness"] for s in STEPS[k]]
+STEPS["all"] = [s for k in ["data", "forecast", "pair_forecast", "qem", "stage6", "robustness"] for s in STEPS[k]]
+STEPS["resume_from_qem"] = [s for k in ["qem", "stage6", "robustness"] for s in STEPS[k]]
 
 
 def main(args):

@@ -11,3 +11,5 @@ qiskit==2.5.1
 qiskit-aer==0.17.2
 # Only needed to (re)download the raw IBM calibration-drift data
 huggingface_hub==1.28.0
+# Only needed to run the tests in tests/
+pytest==9.1.1

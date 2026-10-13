@@ -54,11 +54,11 @@ Per-series MAE of the log value (≈ relative error), k = 1 / k = 7:
 
 | Target | Persistence | Window mean | Ridge | Trees | LSTM | Transformer |
 |---|---|---|---|---|---|---|
-| T1 | 0.307 / 0.311 | **0.229** / 0.234 | 0.233 / 0.235 | 0.233 / 0.237 | 0.231 / 0.235 | **0.229** / **0.232** |
+| T1 | 0.306 / 0.311 | **0.229** / 0.234 | 0.233 / 0.235 | 0.232 / 0.237 | 0.231 / 0.235 | **0.229** / **0.232** |
 | T2 | 0.236 / 0.241 | **0.178** / **0.182** | 0.181 / 0.184 | 0.181 / 0.191 | 0.182 / 0.186 | 0.180 / 0.183 |
-| sx error | 0.241 / 0.326 | 0.243 / 0.252 | 0.222 / 0.245 | **0.207** / 0.244 | 0.218 / 0.245 | 0.216 / **0.242** |
+| sx error | 0.241 / 0.326 | 0.242 / 0.251 | 0.222 / 0.245 | **0.207** / 0.244 | 0.218 / 0.245 | 0.216 / **0.242** |
 | Readout error | 0.371 / 0.389 | 0.292 / 0.309 | 0.287 / **0.303** | **0.286** / 0.305 | 0.293 / 0.308 | 0.294 / 0.314 |
-| CZ error | 0.192 / 0.246 | 0.191 / 0.207 | 0.183 / 0.201 | 0.173 / 0.209 | 0.179 / 0.212 | **0.173** / **0.200** |
+| CZ error | 0.191 / 0.246 | 0.191 / 0.207 | 0.183 / 0.201 | **0.173** / 0.209 | 0.179 / 0.212 | **0.173** / **0.200** |
 
 All 20 cells for every model, with CIs, RMSE, natural-unit MAE and large-change MAE, are in `results/stage3/metrics_test.csv`.
 
@@ -182,6 +182,6 @@ python3 -m experiments.plot_stage3 --which test
 | Numerical results saved; Matplotlib figures (PNG 300 dpi + PDF) | ✅ 11 test + 7 validation figure sets, each with its CSV |
 | Transformer compared with baselines and findings explained | ✅ §3–§7; H1 not supported |
 | Usefulness for Stage 4 assessed | ✅ §6 (preliminary; forecasting helps, Transformer-specific benefit not shown) |
-| `PROJECT_PLAN.md` updated | ✅ |
+| `docs/research/PROJECT_PLAN.md` updated | ✅ |
 
 **vs. base paper:** the base paper does no forecasting, so this stage adds a capability it lacks. The evidence says *forecasting* (shrinkage toward recent levels) improves decisions over reacting to the latest state, which also favours forecasting over a purely reactive bandit fed the latest context. It also says a Transformer is **not necessary** for that benefit on this data. A claim of Transformer superiority would currently be unsupported.
